@@ -1,0 +1,42 @@
+.grid {
+    padding: 4vh;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.name-Factory {
+    margin: 30px 85vh auto;
+    width: auto;
+    color: rgb(2, 138, 2)
+}
+
+.Lista_Cadastros {
+    list-style-type: none;
+    font-size: 4vh;
+
+
+}
+
+.Lista_Cadastros li {
+    padding: 2px;
+
+}
+
+
+
+.links-cadastros {
+    margin-left: 2px;
+
+    text-decoration: none;
+    color: black;
+}
+
+.links-cadastros:hover {
+    color: white;
+}
+
+.text-left {
+    text-align: left;
+}

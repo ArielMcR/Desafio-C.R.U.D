@@ -1,0 +1,21 @@
+.button-List {
+    margin: 6px;
+}
+
+.buttons-links {
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+.input-city,
+.input-city-uf,
+.input-bairro {
+    max-width: 618px;
+    margin-left: 24em;
+}
+
+.cad-pessoa {
+    background-color: #0e6efd;
+    padding: 5px;
+    border-radius: 10px 10px 0px 0px;
+}
