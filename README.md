@@ -56,10 +56,11 @@ Para usar o projeto, siga estas instruções:
     ```
     npm start
     ````
-3. Inciando um novo terminal, vamos iniciar nossos serviçoes de back-end, para isso entramos na pasta back-end:
+3. Inciando um novo terminal, vamos iniciar nossos serviços de back-end, para isso entramos na pasta back-end:
     ```
     cd back-end
     ````
+4. Dentro da pasta rodamos novamente o comando `npm start`
 
 ## Contribuição
 
