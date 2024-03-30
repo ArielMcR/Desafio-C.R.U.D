@@ -21,6 +21,8 @@ Caso seu usuário do banco de dados tenha senha e um nome especifico é necessá
 
 trocando o User e password
 
+Outro ponto a se notar é que tanto front-end como o back-end rodaram em portas distintas para isso é necessário que as portas 3000 e 3001 não estajam obstruidas!!!
+
 ## Instalação
 
 Para começar a utilizar o projeto, siga estas etapas simples:
