@@ -10,8 +10,9 @@ Este projeto é um sistema de gestão de vendas na web. Usamos React JS para cri
 
 ## Observações
 Para este projeto é estritamente necessário o uso do Node JS e MySql, caso não possua nenhum dos dois basta acessar o link abaixo e realizar a instalação:
-`[Node Js](https://nodejs.org/en)`
-`[MySql](https://dev.mysql.com/downloads/workbench/)`
+
+[Node Js](https://nodejs.org/en)
+[MySql](https://dev.mysql.com/downloads/workbench/)
 
 ## Instalação
 
