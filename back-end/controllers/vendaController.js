@@ -25,12 +25,13 @@ const vendasController = {
     },
     update: (req, res) => {
         const venda_id = req.params.id;
-        const q = "UPDATE Venda SET `dt_Venda` = ?, `pessoa_id` = ?, `produto_id` = ?, `vr_Total` WHERE id = ?"
+        const q = "UPDATE Venda SET `dt_Venda` = ?, `pessoa_id` = ?,`vr_Total` = ? WHERE id = ?"
         const values = [
             req.body.dt_Venda,
             req.body.pessoa_id,
             req.body.vr_Total,
         ]
+        console.log('Enviando requisição')
         db.query(q, [...values, venda_id], (err, data) => {
             if (err) {
                 console.log("Erro ao atualizar a venda:", err);
@@ -42,22 +43,14 @@ const vendasController = {
         })
     },
     create: (req, res) => {
-        console.log("Recebendo requisição para criar nova venda...");
+
 
         const dt_Venda = req.body.dt_Venda;
         const pessoa_id = req.body.pessoa_id;
         const vr_Total = req.body.vr_Total;
 
-        console.log("Valores recebidos:");
-        console.log("Data da Venda:", dt_Venda);
-        console.log("ID da Pessoa:", pessoa_id);
-        console.log("Valor Total:", vr_Total);
-
         const q = "INSERT INTO Venda (dt_Venda, pessoa_id, vr_Total) VALUES (?, ?, ?)";
         const values = [dt_Venda, pessoa_id, vr_Total];
-
-        console.log("Executando a query:", q);
-        console.log("Com os valores:", values);
 
         db.query(q, values, (err, data) => {
             if (err) {
@@ -65,7 +58,7 @@ const vendasController = {
                 return res.status(500).json({ error: 'Ocorreu um erro ao criar a venda' });
             }
             console.log("Nova venda criada com sucesso!");
-            return res.json(data);
+            return res.json({ 'id': data.insertId });
         });
     },
     delete: (req, res) => {

@@ -28,12 +28,12 @@ function ListarVenda() {
 
     const HandleClickButton = async (id) => {
         try {
-            toast.success('Excluído com sucesso')
-            await axios.delete('http://localhost:3001/venda/' + id);
+            await axios.delete('http://localhost:3001/vendaItens/' + id)
             setReload(!reload)
+            toast.success('Excluído com sucesso')
             history('/listar/Vendas');
         } catch (error) {
-            toast.success('Ocorreu algum com sucesso')
+            toast.error('Ocorreu algum com sucesso')
         }
     }
 
@@ -71,7 +71,7 @@ function ListarVenda() {
                                     <td>{venda.vr_Total}</td>
 
                                     <td className='text-center'>
-                                        <Link to={`/update/venda/${venda.id}`}>
+                                        <Link to={`/update/vendas/${venda.id}`}>
                                             <Button color='warning' style={{ marginRight: '10px' }}>
                                                 Editar
                                             </Button>

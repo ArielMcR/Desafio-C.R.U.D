@@ -14,6 +14,7 @@ import ListarProduto from "./components/listagem/ListarProduto";
 import UpdateProdutos from "./components/update/UpdateProdutos";
 import ListarVenda from "./components/listagem/ListarVenda";
 import Vendas from "./components/cadastros/Vendas";
+import UpdateVenda from "./components/update/UpdateVenda";
 function MainRoutes() {
     return (
         <Routes>
@@ -38,7 +39,7 @@ function MainRoutes() {
             <Route path="/update/bairro/:id" element={<UpdateBairro />} />
             <Route path="/update/pessoa/:id" element={<UpdatePessoa />} />
             <Route path="/update/produto/:id" element={<UpdateProdutos />} />
-            <Route path="/update/Vendas/:id" element={<UpdateProdutos />} />
+            <Route path="/update/vendas/:id" element={<UpdateVenda />} />
 
 
         </Routes>

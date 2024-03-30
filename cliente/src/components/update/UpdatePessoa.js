@@ -132,12 +132,13 @@ function UpdatePessoa() {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="bairro">Bairro</Label>
-                                <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChange}>
+                                <Input type="select" name="bairro_id" id="bairro" className="form-outline" value={formValues.bairro_id} onChange={HandleOnChange}>
                                     {bairro.map((bairro) => (
-                                        <option key={bairro.id_bairro} value={bairro.id_bairro} selected={bairro.id_bairro === formValues.bairro_id} >{bairro.nome_Bairro} </option>
+                                        <option key={bairro.id_bairro} value={bairro.id_bairro}>{bairro.nome_Bairro}</option>
                                     ))}
                                 </Input>
                             </FormGroup>
+
                         </Col>
                         <Col md={4}>
                             <FormGroup>

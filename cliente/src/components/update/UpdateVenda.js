@@ -3,15 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { Form, FormGroup, Label, Input, Container, Row, Col, Button, Table } from 'reactstrap';
 import axios from 'axios';
 import { NumericFormat } from 'react-number-format'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { MdOutlineShoppingCart } from "react-icons/md";
-
 import { toast, ToastContainer } from "react-toastify";
 
-function Vendas() {
+function UpdateVenda() {
+    const location = useLocation();
+    const venda_id = location.pathname.split('/')[3];
     const history = useNavigate()
     const [formValues, setValues] = useState({
-        'venda_id': 0,
+        'venda_id': venda_id,
         'produto_id': 0,
         'qtade': 0,
         'vr_Venda': 0
@@ -45,33 +46,24 @@ function Vendas() {
             console.error('Erro ao adicionar produto ao carrinho:', error);
         }
     };
-    const removeFromCart = (index) => {
+    const removeFromCart = async (index, venda_id) => {
+        await axios.delete('http://localhost:3001/vendaItens/' + venda_id)
         const newCartItems = [...cartItems];
         newCartItems.splice(index, 1);
         setCartItems(newCartItems);
+        toast.play('Excluído com sucesso')
     };
     const HandleClickButton = async () => {
-
-        if (!venda.dt_Venda || venda.pessoa_id === 0 || venda.vr_Total === 0 || formValues.produto_id === 0 || formValues.qtade === 0 || formValues.vr_Venda === 0) {
+        if (!venda.dt_Venda || venda.pessoa_id === 0 || venda.vr_Total === 0) {
             toast.error('Preencha todos os campos');
             return;
         }
-
         try {
-            console.log('Criando venda')
-            const res = await axios.post('http://localhost:3001/venda', venda);
-            console.log('Venda criada')
-            const valor_Id = res.data.id
-            console.log(valor_Id)
-            const updatedCartItems = cartItems.map(item => ({ ...item, 'venda_id': valor_Id }));
-            setCartItems(updatedCartItems);
-            console.log(updatedCartItems)
-
-            for (const produto of updatedCartItems) {
-                await axios.post('http://localhost:3001/vendaItens', produto);
-            }
-
+            await axios.put('http://localhost:3001/venda/' + venda_id, venda)
             history('/listar/Vendas')
+            // for (const produto of cartItems) {
+            //     await axios.put('http://localhost:3001/vendaItens/' + venda_id, produto);
+            // }
         } catch (error) {
             console.error(error);
 
@@ -80,9 +72,10 @@ function Vendas() {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        const total = cartItems.reduce((sum, item) => sum + item.vr_Total, 0);
+        const total = cartItems.reduce((total, item) => total + (item.vr_Venda * item.qtade), 0);
         setTotal(total);
     }, [cartItems]);
+
     const HandleOnChange = (e) => {
         const { name, value } = e.target;
         let valorUnitario = 0;
@@ -107,6 +100,7 @@ function Vendas() {
             }));
         }
     }
+
     useEffect(() => {
         setValues(prevState => ({
             ...prevState,
@@ -147,13 +141,52 @@ function Vendas() {
         }
 
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/venda/' + venda_id)
+            .then(res => {
+                const vendaData = res.data[0];
+                setVenda({
+                    'dt_Venda': vendaData.dt_Venda,
+                    'pessoa_id': vendaData.pessoa_id,
+                    'vr_Total': vendaData.vr_Total,
+                })
+            })
+            .catch(error => {
+                console.log('Erro ao buscar dados:', error);
+                toast.error('Algum erro aconteceu, redirecionando em 3 segundos');
+                setTimeout(() => {
+                    history('listar/Produto');
+                }, 3000);
+            });
+        axios.get('http://localhost:3001/vendaItens/' + venda_id)
+            .then(res => {
+                res.data.forEach(vendaItemData => {
+                    nomeDoProdutoPorId(vendaItemData.produto_Id).then(nomeProduto => {
+                        setCartItems(prevCartItems => [...prevCartItems, {
+                            'id_VendaItens': vendaItemData.id_VendaItens,
+                            'venda_id': vendaItemData.venda_id,
+                            'produto_id': vendaItemData.produto_Id,
+                            'vr_Venda': vendaItemData.vr_Venda,
+                            'qtade': vendaItemData.qtade,
+                            'nome_Produto': nomeProduto,
+                            'vr_Total': vendaItemData.vr_Venda * vendaItemData.qtade
+                        }]);
+                    });
+                });
+            })
+
+
+    }, [venda_id, history]);
+
+
     useEffect(() => {
         fetchProdutos()
         fetchPessoa()
     }, [])
 
 
-
+    console.log(cartItems)
     return (
         <>
             <Header />
@@ -167,20 +200,20 @@ function Vendas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="dataVenda">Data da Venda:</Label>
-                                <Input type="date" name="dt_Venda" id="dataVenda" onChange={HandleOnChange} />
+                                <Input type="date" name="dt_Venda" id="dataVenda" onChange={HandleOnChange} value={venda.dt_Venda.split('T')[0]} />
                             </FormGroup>
                         </Col>
                         <Col md={6} >
                             <FormGroup>
                                 <Label for="pessoa">Pessoa:</Label>
                                 <Input type="select" name="pessoa_id" id="pessoa" onChange={HandleOnChange}>
-                                    <option value="0" select>Escolha uma pessoa</option>
+                                    <option value="0">Escolha uma pessoa</option>
                                     {pessoa.map((pessoa) => (
-                                        <option key={pessoa.id_Pessoa} value={pessoa.id_Pessoa}>{pessoa.nome_Pessoa}</option>
+                                        <option key={pessoa.id_Pessoa} value={pessoa.id_Pessoa} selected={pessoa.id_Pessoa === venda.pessoa_id}>{pessoa.nome_Pessoa}</option>
                                     ))}
-                                </Input >
-
+                                </Input>
                             </FormGroup>
+
                         </Col>
                     </Row>
                     <Row>
@@ -264,13 +297,14 @@ function Vendas() {
                     <tbody>
                         {cartItems.map((produto, index) => (
                             <tr key={index}>
+                                <td>{produto.id_VendaItens}</td>
                                 <td>{produto.nome_Produto}</td>
                                 <td>{produto.qtade}</td>
                                 <td>R$ {produto.vr_Venda}</td>
                                 <td>R$ {produto.vr_Total}</td>
                                 <td>
                                     {/* Botão para remover item do carrinho */}
-                                    <Button color='danger' onClick={() => removeFromCart(index)}>
+                                    <Button color='danger' onClick={() => removeFromCart(index, venda_id)}>
                                         Remover
                                     </Button>
                                 </td>
@@ -291,5 +325,6 @@ function Vendas() {
         </>
     )
 
+
 }
-export default Vendas
+export default UpdateVenda

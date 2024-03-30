@@ -13,20 +13,22 @@ const vendaItemController = {
     },
     getById: (req, res) => {
         const venda_id = req.params.id;
-        const q = "SELECT * FROM Venda WHERE id_VendaItens = ?";
+        const q = "SELECT * FROM Venda_Itens WHERE venda_id = ?";
         db.query(q, [venda_id], (err, data) => {
             if (err) {
                 console.error(err);
                 res.status(500).send("Erro ao buscar bairro.");
             } else {
+                // console.log(data)
                 res.status(200).send(data);
             }
         });
     },
     update: (req, res) => {
         const venda_id = req.params.id;
-        const q = "UPDATE venda_Item SET `venda_id` `produto_id` = ?, `vr_Venda`, `qtade` WHERE id_VendaItens = ?"
+        const q = "UPDATE venda_Itens SET `venda_id` = ?, `produto_id` = ?, `vr_Venda` = ?, `qtade`= ? WHERE venda_id = ?"
         const values = [
+            req.body.venda_id,
             req.body.produto_id,
             req.body.vr_Venda,
             req.body.qtade,
@@ -43,17 +45,9 @@ const vendaItemController = {
     },
     create: (req, res) => {
 
-        console.log("Recebendo requisição para criar novo item de venda...");
 
-        const venda_id = req.body.venda_id;
-        const produto_id = req.body.produto_id;
-        const qtade = req.body.qtade;
 
-        console.log("Valores recebidos:");
-        console.log("venda_id:", venda_id);
-        console.log("produto_id:", produto_id);
-        console.log("qtade: ", qtade);
-
+        console.log("\n")
         const q = "INSERT INTO Venda_Itens (venda_id, produto_id, vr_Venda, qtade) VALUES (?)";
         const values = [req.body.venda_id, req.body.produto_id, req.body.vr_Venda, req.body.qtade];
         db.query(q, [values], (err, data) => {
@@ -66,7 +60,7 @@ const vendaItemController = {
     },
     delete: (req, res) => {
         const venda_id = req.params.id;
-        const q = "DELETE FROM Venda WHERE id_VendaItens = ?";
+        const q = "DELETE FROM Venda_Itens WHERE id_VendaItens = ?";
         db.query(q, [venda_id], (err, data) => {
             if (err) {
                 console.error(err);

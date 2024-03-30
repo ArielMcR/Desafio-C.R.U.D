@@ -17,10 +17,10 @@ function ListarPessoas() {
             console.log('Erro ao buscar cidades:', err);
         }
     }
-
+    console.log(pessoas)
     useEffect(() => {
         fetchPessoas()
-    })
+    }, [])
 
     const HandleClickButton = async (pessoas_id) => {
         try {
