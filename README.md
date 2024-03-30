@@ -2,13 +2,13 @@
 Este projeto é um sistema de gestão de vendas na web. Usamos React JS para criar a interface do usuário. Axios e Express JS são usados para conectar o front-end e o back-end. E o back-end é construído com Node.js.
 ## Índice
 
--[Observações}(#observações)
+- [Observações](#observações)
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
-## <span style={color:red}>Observações</span >
+## "<span style=color:red>Observações</span >"
 
 ## Instalação
 
