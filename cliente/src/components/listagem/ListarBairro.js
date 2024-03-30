@@ -9,7 +9,7 @@ function ListarBairro() {
     const history = useNavigate()
     const [bairro, setBairro] = useState([])
     const [reload, setReload] = useState(false)
-    const Fecht = async () => {
+    const fetch = async () => {
         try {
             const res = await axios.get('http://localhost:3001/bairro')
             setBairro(res.data)
@@ -17,7 +17,7 @@ function ListarBairro() {
         }
     }
     useEffect(() => {
-        Fecht()
+        fetch()
     })
 
 

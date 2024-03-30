@@ -19,7 +19,6 @@ function UpdateBairro() {
                 const bairroData = res.data[0];
                 setFormValues({
                     nome_Bairro: bairroData.nome_Bairro,
-                    // Adicione mais campos conforme necessário
                 });
             })
             .catch(error => {

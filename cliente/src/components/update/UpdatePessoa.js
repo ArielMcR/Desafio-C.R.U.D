@@ -13,7 +13,7 @@ function UpdatePessoa() {
     const [cidade, setCidade] = useState([]);
     const [bairro, setBairro] = useState([]);
     const [formValues, setValues] = useState({
-        nome_Pessoaome: '',
+        nome_Pessoa: '',
         cep: '',
         endereco: '',
         numero: 0,
@@ -50,7 +50,7 @@ function UpdatePessoa() {
             });
     }, [pessoa_id]);
 
-    const FechtCidade = async () => {
+    const fetchCidade = async () => {
         try {
             const res = await axios.get('http://localhost:3001/cidade')
             setCidade(res.data)
@@ -58,7 +58,7 @@ function UpdatePessoa() {
             console.log('Erro ao buscar dados:')
         }
     }
-    const FechtBairro = async () => {
+    const fetchBairro = async () => {
         try {
             const res = await axios.get('http://localhost:3001/bairro')
             setBairro(res.data)
@@ -67,8 +67,8 @@ function UpdatePessoa() {
         }
     }
     useEffect(() => {
-        FechtBairro()
-        FechtCidade()
+        fetchBairro()
+        fetchCidade()
     }, [])
 
 

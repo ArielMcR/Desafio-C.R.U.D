@@ -6,7 +6,7 @@ import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 function UpdateCidade() {
-    const [value, setValue] = useState({}); // Correção: Definir como objeto vazio {}
+    const [value, setValue] = useState({});
     const [formValues, setValues] = useState({
         nome_Cidade: '',
         sigla_Uf: 0

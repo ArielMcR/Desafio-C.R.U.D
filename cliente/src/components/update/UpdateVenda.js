@@ -61,9 +61,7 @@ function UpdateVenda() {
         try {
             await axios.put('http://localhost:3001/venda/' + venda_id, venda)
             history('/listar/Vendas')
-            // for (const produto of cartItems) {
-            //     await axios.put('http://localhost:3001/vendaItens/' + venda_id, produto);
-            // }
+
         } catch (error) {
             console.error(error);
 

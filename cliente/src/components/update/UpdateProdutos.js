@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 
 function UpdateProdutos() {
-    const [value, setValue] = useState({}); // Correção: Definir como objeto vazio {}
+    const [value, setValue] = useState({});
     const [formValues, setValues] = useState({
         nome_Produto: '',
         vr_Venda: 0
@@ -46,7 +46,7 @@ function UpdateProdutos() {
         const formattedValue = name === 'vr_Venda' ? formatCurrencyToNumber(value) : value;
 
         setValues(prev => ({ ...prev, [name]: formattedValue }));
-        setValue(prev => ({ ...prev, [name]: formattedValue })); // Correção: Atualizar value também
+        setValue(prev => ({ ...prev, [name]: formattedValue }));
     };
     console.log(formValues)
 

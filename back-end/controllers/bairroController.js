@@ -34,7 +34,7 @@ const bairroController = {
                 console.log("Erro ao atualizar bairro:", err);
                 res.status(500).send("Erro ao excluir bairro.");
             } else {
-                console.log("Resultado da consulta:", data); // Log dos dados retornados pela consulta
+                console.log("Resultado da consulta:", data); 
                 res.status(200).send("bairro atualizada com sucesso.");
             }
         })

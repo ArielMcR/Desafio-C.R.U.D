@@ -37,7 +37,7 @@ const vendaItemController = {
                 console.log("Erro ao atualizar a venda:", err);
                 res.status(500).send("Erro ao excluir produto.");
             } else {
-                console.log("Resultado da consulta:", data); // Log dos dados retornados pela consulta
+                console.log("Resultado da consulta:", data); 
                 res.status(200).send("Venda atualizada com sucesso.");
             }
         })
