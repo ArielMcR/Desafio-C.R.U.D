@@ -2,10 +2,13 @@
 Este projeto é um sistema de gestão de vendas na web. Usamos React JS para criar a interface do usuário. Axios e Express JS são usados para conectar o front-end e o back-end. E o back-end é construído com Node.js.
 ## Índice
 
+-[Observações}(#observações)
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
+
+## <span style={color:red}>Observações</span >
 
 ## Instalação
 
@@ -28,21 +31,27 @@ Para começar a utilizar o projeto, siga estas etapas simples:
     ```bash
     npm install
     ```
-   Valido resaltar que neste projeto, foram utilizadas diversas bibliotecas para o melhor desenvolvimento, tais como:
-   #Front-end:
-        "bootstrap": "^5.3.3",
-        "date-fns": "^3.5.0",
-        "react-icons": "^5.0.1",
-        "react-input-mask": "^3.0.0-alpha.2",
-        "react-number-format": "^5.3.4",
-        "react-router-dom": "^6.22.3",
-        "react-toastify": "^10.0.5",
-        "reactstrap": "^9.2.2",
- #Back-end:
-        "cors": "^2.8.5",
-        "express": "^4.18.3",
-        "mysql": "^2.18.1",
-        "nodemon": "^3.1.0"
+## Bibliotecas Utilizadas
+
+Neste projeto, foram utilizadas diversas bibliotecas para o melhor desenvolvimento:
+
+### Front-end
+
+- **Bootstrap**: "^5.3.3"
+- **Date-fns**: "^3.5.0"
+- **React Icons**: "^5.0.1"
+- **React Input Mask**: "^3.0.0-alpha.2"
+- **React Number Format**: "^5.3.4"
+- **React Router DOM**: "^6.22.3"
+- **React Toastify**: "^10.0.5"
+- **Reactstrap**: "^9.2.2"
+
+### Back-end
+
+- **Cors**: "^2.8.5"
+- **Express**: "^4.18.3"
+- **MySQL**: "^2.18.1"
+- **Nodemon**: "^3.1.0"
 
 ## Uso
 
