@@ -48,8 +48,18 @@ Para começar a utilizar o projeto, siga estas etapas simples:
 
 Para usar o projeto, siga estas instruções:
 
-1. Se estiver no Windows utilize o comando ```bash cd cliente```
-2. [Adicione instruções específicas de uso do seu projeto.]
+1. Primeiramente deve-se entrar na pasta raiz do projeto, para isso dentro de um terminal seja ele(PowerShell, Prompt e etc) utilizaremos o comando
+    ```
+    cd cliente
+    ````
+2. Estando dentro da pasta cliente, utilizaremos o comando, assim nossa aplicação front-end começara a rodar:
+    ```
+    npm start
+    ````
+3. Inciando um novo terminal, vamos iniciar nossos serviçoes de back-end, para isso entramos na pasta back-end:
+    ```
+    cd back-end
+    ````
 
 ## Contribuição
 
