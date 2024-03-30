@@ -52,36 +52,41 @@ function ListarBairro() {
                     Adicionar
                 </Button>
             </Link>
-            <div style={{ display: 'contents', justifyContent: 'center' }}>
-                <Table className='tabela-dados text-center' hover striped>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {bairro.map((bairro) => (
-                            <tr key={bairro.id_bairro}>
-                                <td>{bairro.id_bairro + 1}</td>
-                                <td>{bairro.nome_Bairro}</td>
-                                <td className='text-center'>
-                                    <Link to={`/update/bairro/${bairro.id_bairro}`}>
-                                        <Button color='warning' style={{ marginRight: '10px' }}>
-                                            Editar
-                                        </Button>
-                                    </Link>
-                                    <Button color='danger' onClick={() => HandleClickButton(bairro.id_bairro)}>
-                                        Excluir
-                                    </Button>
-                                </td>
+            {bairro.length > 0 ? (
+                <div style={{ display: 'contents', justifyContent: 'center' }}>
+                    <Table className='tabela-dados text-center' hover striped>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Ações</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            </div>
-
+                        </thead>
+                        <tbody>
+                            {bairro.map((bairro) => (
+                                <tr key={bairro.id_bairro}>
+                                    <td>{bairro.id_bairro + 1}</td>
+                                    <td>{bairro.nome_Bairro}</td>
+                                    <td className='text-center'>
+                                        <Link to={`/update/bairro/${bairro.id_bairro}`}>
+                                            <Button color='warning' style={{ marginRight: '10px' }}>
+                                                Editar
+                                            </Button>
+                                        </Link>
+                                        <Button color='danger' onClick={() => HandleClickButton(bairro.id_bairro)}>
+                                            Excluir
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
+            ) : (
+                <div className="text-center">
+                    Nenhum dado cadastrado
+                </div>
+            )}
 
 
 

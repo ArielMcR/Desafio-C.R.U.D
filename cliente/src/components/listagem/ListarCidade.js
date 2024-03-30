@@ -53,38 +53,43 @@ function Listar_cidade() {
                     Adicionar
                 </Button>
             </Link>
-            <div style={{ display: 'contents', justifyContent: 'center' }}>
-                <Table className='tabela-dados text-center' hover striped>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>UF</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cidade.map((cidade) => (
-                            <tr key={cidade.id_Cidade}>
-                                <td>{cidade.id_Cidade}</td>
-                                <td>{cidade.nome_Cidade}</td>
-                                <td>{cidade.sigla_Uf}</td>
-                                <td className='text-center'>
-                                    <Link to={`/update/cidade/${cidade.id_Cidade}`}>
-                                        <Button color='warning' style={{ marginRight: '10px' }}>
-                                            Editar
-                                        </Button>
-                                    </Link>
-                                    <Button color='danger' onClick={() => HandleClickButton(cidade.id_Cidade)}>
-                                        Excluir
-                                    </Button>
-                                </td>
+            {cidade.length > 0 ? (
+                <div style={{ display: 'contents', justifyContent: 'center' }}>
+                    <Table className='tabela-dados text-center' hover striped>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>UF</th>
+                                <th>Ações</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            </div>
-
+                        </thead>
+                        <tbody>
+                            {cidade.map((cidade) => (
+                                <tr key={cidade.id_Cidade}>
+                                    <td>{cidade.id_Cidade}</td>
+                                    <td>{cidade.nome_Cidade}</td>
+                                    <td>{cidade.sigla_Uf}</td>
+                                    <td className='text-center'>
+                                        <Link to={`/update/cidade/${cidade.id_Cidade}`}>
+                                            <Button color='warning' style={{ marginRight: '10px' }}>
+                                                Editar
+                                            </Button>
+                                        </Link>
+                                        <Button color='danger' onClick={() => HandleClickButton(cidade.id_Cidade)}>
+                                            Excluir
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
+            ):(
+                    <div className="text-center">
+                        Nenhum dado cadastrado
+                    </div>
+            )}
 
 
 
