@@ -17,8 +17,9 @@ Para este projeto é estritamente necessário o uso do Node JS e MySql, caso nã
 </br> 
 Caso seu usuário do banco de dados tenha senha e um nome especifico é necessário por sua vez alterar o arquivo connection.js localizado dentro da pasta back-end
 
-(![image](https://github.com/ArielMcR/Desafio-C.R.U.D/assets/91798390/08b46e6a-15a7-41f3-b591-df0e27da0055)
-)
+![image](https://github.com/ArielMcR/Desafio-C.R.U.D/assets/91798390/08b46e6a-15a7-41f3-b591-df0e27da0055)
+
+trocando o User e password
 
 ## Instalação
 
