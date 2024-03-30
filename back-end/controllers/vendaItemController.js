@@ -19,7 +19,6 @@ const vendaItemController = {
                 console.error(err);
                 res.status(500).send("Erro ao buscar bairro.");
             } else {
-                // console.log(data)
                 res.status(200).send(data);
             }
         });

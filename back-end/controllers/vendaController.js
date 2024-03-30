@@ -34,10 +34,8 @@ const vendasController = {
         console.log('Enviando requisição')
         db.query(q, [...values, venda_id], (err, data) => {
             if (err) {
-                console.log("Erro ao atualizar a venda:", err);
                 res.status(500).send("Erro ao excluir produto.");
             } else {
-                console.log("Resultado da consulta:", data); // Log dos dados retornados pela consulta
                 res.status(200).send("Venda atualizada com sucesso.");
             }
         })
@@ -54,10 +52,8 @@ const vendasController = {
 
         db.query(q, values, (err, data) => {
             if (err) {
-                console.error('Erro ao inserir nova venda:', err);
                 return res.status(500).json({ error: 'Ocorreu um erro ao criar a venda' });
             }
-            console.log("Nova venda criada com sucesso!");
             return res.json({ 'id': data.insertId });
         });
     },
