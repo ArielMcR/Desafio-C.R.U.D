@@ -40,15 +40,28 @@ const bairroController = {
         })
     },
     create: (req, res) => {
-        const q = "INSERT INTO Bairro (nome_Bairro) VALUES (?)";
         const values = [req.body.nome_Bairro];
-        db.query(q, values, (err, data) => {
+        const verificar_bairro = "SELECT * FROM Bairro WHERE nome_Bairro = ?";
+
+        db.query(verificar_bairro, [req.body.nome_Bairro], (err, result) => {
             if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'An error occurred' });
+                console.error('Erro ao verificar o produto:', err);
+                return res.status(500).json({ error: 'Ocorreu um erro ao verificar o produto' });
             }
-            return res.json(data);
+            if (result.length > 0) {
+                return res.status(400).json({ error: 'Produto já está cadastrado' });
+            } else {
+                const q = "INSERT INTO Bairro (nome_Bairro) VALUES (?)";
+                db.query(q, values, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return res.status(500).json({ error: 'An error occurred' });
+                    }
+                    return res.json(data);
+                });
+            }
         });
+
     },
     delete: (req, res) => {
         const bairro_id = req.params.id;

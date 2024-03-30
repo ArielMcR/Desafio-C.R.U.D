@@ -15,18 +15,7 @@ function Cidade() {
             { ...prev, [e.target.name]: e.target.value }))
 
     }
-    const notify = (message, type) => {
-        switch (type) {
-            case 'success':
-                toast.success(message);
-                break;
-            case 'error':
-                toast.error(message);
-                break;
-            default:
-                toast(message);
-        }
-    }
+
     const HandleClickButton = async (e) => {
         e.preventDefault()
         for (let field in city) {
@@ -40,7 +29,11 @@ function Cidade() {
             localStorage.setItem('notification', "cidade cadastrada com sucesso!");
             navigate('/listar/Cidade')
         } catch (err) {
-            notify("Ocorreu um erro ao cadastrar a cidade.", 'error');
+            if (err.response && err.response.status === 400) {
+                toast.error('Cidade já está cadastrada')
+            } else {
+                toast.error("Algum erro aconteceu, tente novamente")
+            }
         }
 
     }

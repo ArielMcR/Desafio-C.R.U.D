@@ -76,7 +76,6 @@ const pessoasController = {
         })
     },
     create: (req, res) => {
-        const q = "INSERT INTO Pessoa (nome_Pessoa, cep, endereco, numero, complemento,telefone, email, cidade_id, bairro_id) VALUES (?, ?,?,?,?,?,?,?,?)";
         const values = [req.body.nome_Pessoa,
         req.body.cep,
         req.body.endereco,
@@ -86,20 +85,29 @@ const pessoasController = {
         req.body.email,
         req.body.cidade_id,
         req.body.bairro_id,];
-        db.query(q, values, (err, data) => {
-            if (err) {
-                if (error.code === 'ER_DUP_ENTRY') {
-                    // Tratar o erro de entrada duplicada
-                    res.status(400).send('O email já está em uso.');
-                } else {
-                    // Tratar outros erros
-                    res.status(500).send('Ocorreu um erro desconhecido.');
-                }
-            } else {
 
-                return res.json(data);
+        const verificar_pessoa = "SELECT * FROM Pessoa WHERE nome_Pessoa = ?";
+
+        db.query(verificar_pessoa, [req.body.nome_Pessoa], (err, result) => {
+            if (err) {
+                console.error('Erro ao verificar ao verificar a pessoa:', err);
+                return res.status(500).json({ error: 'Ocorreu um erro r ao verificar a pessoa' });
+            }
+            if (result.length > 0) {
+                return res.status(400).json({ error: 'Pessoa já cadastrada' });
+            } else {
+                const q = "INSERT INTO Pessoa (nome_Pessoa, cep, endereco, numero, complemento,telefone, email, cidade_id, bairro_id) VALUES (?, ?,?,?,?,?,?,?,?)";
+                db.query(q, values, (err, data) => {
+                    if (err) {
+                    } else {
+
+                        return res.json(data);
+                    }
+                });
             }
         });
+
+
     },
     delete: (req, res) => {
         const city_id = req.params.id;

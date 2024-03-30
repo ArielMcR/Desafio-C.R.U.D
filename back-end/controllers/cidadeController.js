@@ -32,21 +32,37 @@ const cidadeController = {
         ]
         db.query(q, [...values, city_id], (err, data) => {
             if (err) {
-               
+
             } else {
-                
+
             }
         })
     },
     create: (req, res) => {
-        const q = "INSERT INTO Cidade (nome_Cidade, sigla_Uf) VALUES (?, ?)";
         const values = [req.body.nome_Cidade, req.body.sigla_Uf];
-        db.query(q, values, (err, data) => {
+
+        const verificar_cidade = "SELECT * FROM cidade WHERE nome_Cidade = ?";
+
+        db.query(verificar_cidade, [req.body.nome_Cidade], (err, result) => {
             if (err) {
-                console.error(err);
+                console.error('Erro ao verificar a cidade:', err);
+                return res.status(500).json({ error: 'Ocorreu um erro ao verificar a cidade' });
             }
-            return res.json(data);
+            if (result.length > 0) {
+                return res.status(400).json({ error: 'Cidade já está cadastrado' });
+            } else {
+                const q = "INSERT INTO Cidade (nome_Cidade, sigla_Uf) VALUES (?, ?)";
+                db.query(q, values, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                    else {
+                        return res.json(data);
+                    }
+                });
+            }
         });
+
     },
     delete: (req, res) => {
         const city_id = req.params.id;

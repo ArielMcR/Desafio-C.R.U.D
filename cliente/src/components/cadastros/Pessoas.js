@@ -62,12 +62,17 @@ function Pessoas() {
             }
         }
         try {
-            const res = await axios.post('http://localhost:3001/pessoas', formValues)
+            await axios.post('http://localhost:3001/pessoas', formValues)
             localStorage.setItem('notification', 'Pessoa criada com sucesso',);
             history('/listar/Pessoas')
         } catch (error) {
-            toast.error('Algum erro aconteceu ')
+            if (error.response && error.response.status === 400) {
+                toast.error('Esta pessoa já está cadastrada')
 
+            }
+            else {
+                toast.error("Algum erro aconteceu, tente novamente")
+            }
         }
     }
 

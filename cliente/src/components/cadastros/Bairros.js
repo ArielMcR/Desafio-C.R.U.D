@@ -16,31 +16,24 @@ function Bairro() {
             { ...prev, [e.target.name]: e.target.value }))
 
     }
-    const notify = (message, type) => {
-        switch (type) {
-            case 'success':
-                toast.success(message);
-                break;
-            case 'error':
-                toast.error(message);
-                break;
-            default:
-                toast(message);
-        }
-    }
+
     const HandleClickButton = async (e) => {
         e.preventDefault()
 
         if (bairro.nome_Bairro === '' || bairro.nome_Bairro === undefined) {
-            notify("Por favor, insira um valor válido para o bairro.", 'error');
-            return; // Interrompe a execução da função se o valor for inválido
+            toast.warning('Por favor preencha todos os campos')
         }
         try {
             await axios.post('http://localhost:3001/bairro', bairro)
             localStorage.setItem('notification', "Bairro cadastrado com sucesso!");
             history('/listar/Bairro')
         } catch (err) {
-            notify("Ocorreu um erro ao cadastrar o Bairro.", 'error');
+            if (err.response && err.response.status === 400) {
+                toast.warning("Bairro já cadastrado")
+            }
+            else {
+                toast.error("Algum erro aconteceu, tente novamente")
+            }
         }
     }
     const HandleClickReturn = () => {

@@ -36,7 +36,6 @@ function Produto() {
 
         setValues(prev => ({ ...prev, [name]: formattedValue }));
     }
-    console.log(formValues)
     const HandleClickButton = async (e) => {
         e.preventDefault()
         for (let field in formValues) {
@@ -50,7 +49,13 @@ function Produto() {
             localStorage.setItem('notification', 'Produto criado com sucesso',);
             history('/listar/Produto')
         } catch (error) {
-            toast.error('Ocorreu algum erro, tente novamente')
+            if (error.response && error.response.status === 400) {
+                toast.error('Este produto já está cadastrado')
+
+            }
+            else {
+                toast.error("Algum erro aconteceu, tente novamente")
+            }
         }
     }
 

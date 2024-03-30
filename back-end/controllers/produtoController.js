@@ -41,17 +41,29 @@ const produtoController = {
         })
     },
     create: (req, res) => {
-
-        const q = "INSERT INTO Produto (nome_Produto, vr_Venda) VALUES (?)";
         const values = [req.body.nome_Produto, req.body.vr_Venda];
-        db.query(q, [values], (err, data) => {
+        const verificar_produto = "SELECT * FROM Produto WHERE nome_Produto = ?";
+
+        db.query(verificar_produto, [req.body.nome_Produto], (err, result) => {
             if (err) {
-                console.error('Erro ao inserir novo produto:', err);
-                return res.status(500).json({ error: 'Ocorreu um erro ao criar o produto' });
+                console.error('Erro ao verificar o produto:', err);
+                return res.status(500).json({ error: 'Ocorreu um erro ao verificar o produto' });
             }
-            return res.json(data);
+            if (result.length > 0) {
+                return res.status(400).json({ error: 'Produto já está cadastrado' });
+            } else {
+                const q = "INSERT INTO Produto (nome_Produto, vr_Venda) VALUES (?)";
+                db.query(q, [values], (err, data) => {
+                    if (err) {
+                        console.error('Erro ao inserir novo produto:', err);
+                        return res.status(500).json({ error: 'Ocorreu um erro ao criar o produto' });
+                    }
+                    return res.json(data);
+                });
+            }
         });
     },
+
     delete: (req, res) => {
         const produto_Id = req.params.id;
         const q = "DELETE FROM Produto WHERE id_Produto = ?";
