@@ -8,7 +8,7 @@ Este projeto é um sistema de gestão de vendas na web. Usamos React JS para cri
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
-## "<span style=color:red>Observações</span >"
+## <span style="color:red">Observações</span >
 
 ## Instalação
 
