@@ -5,6 +5,7 @@ const pessoasRouter = express.Router();
 
 pessoasRouter.get('/', pessoasController.getAll);
 pessoasRouter.get('/:id', pessoasController.getById);
+pessoasRouter.post('/search', pessoasController.getByFilters);
 pessoasRouter.post('/', pessoasController.create);
 pessoasRouter.put('/:id', pessoasController.update);
 pessoasRouter.delete('/:id', pessoasController.delete);

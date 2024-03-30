@@ -53,8 +53,8 @@ function HomePage() {
                 <CardBody>
                   <CardText>
                     <ol className='Lista_Cadastros text-left'>
-                      <li><BsPeopleFill /><a className='links-cadastros' href=' '>Lista de Pessoas</a></li>
-                      <li><FaShoppingCart /><a className='links-cadastros' href=' '>Lista de vendas</a></li>
+                      <li><BsPeopleFill /><Link to='/relatorio/Pessoas' className='links-cadastros'>Lista de Pessoas</Link></li>
+                      <li><FaShoppingCart /><Link to='/relatorio/Pessoas' className='links-cadastros'>Lista de vendas</Link></li>
                     </ol>
                   </CardText>
                 </CardBody>

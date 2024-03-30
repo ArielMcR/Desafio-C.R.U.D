@@ -15,6 +15,7 @@ import UpdateProdutos from "./components/update/UpdateProdutos";
 import ListarVenda from "./components/listagem/ListarVenda";
 import Vendas from "./components/cadastros/Vendas";
 import UpdateVenda from "./components/update/UpdateVenda";
+import RelatorioPessoas from "./components/relatorios/RelatorioPessoas"
 function MainRoutes() {
     return (
         <Routes>
@@ -25,6 +26,9 @@ function MainRoutes() {
             <Route path="/listar/Pessoas" element={<ListarPessoas />} />
             <Route path="/listar/Produto" element={<ListarProduto />} />
             <Route path="/listar/Vendas" element={<ListarVenda />} />
+
+            {/* Relatórios */}
+            <Route path="/relatorio/Pessoas" element={<RelatorioPessoas />} />
 
 
             {/* Cadastro dos dados */}

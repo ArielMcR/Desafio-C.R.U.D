@@ -27,7 +27,7 @@ function Header({ direction, ...args }) {
     return (
         <div>
             <Navbar color='primary' dark expand="md">
-                <NavbarBrand href="/">Sistema</NavbarBrand>
+                <NavbarBrand> <Link className='link-to' style={{ color: 'white' }} to='/'> Sistema</Link> </NavbarBrand>
                 <Nav className="me-auto" navbar>
                     <NavItem>
                         <Link to='/' className='link-to'> <NavLink>Home</NavLink></Link>
@@ -38,9 +38,9 @@ function Header({ direction, ...args }) {
                         </DropdownToggle>
                         <DropdownMenu end>
                             <Link className='link-to' to='/listar/Cidade'><DropdownItem>Cidades</DropdownItem></Link>
-                            <Link className='link-to' to='/listar/Bairros'><DropdownItem>Bairros</DropdownItem></Link>
+                            <Link className='link-to' to='/listar/Bairro'><DropdownItem>Bairros</DropdownItem></Link>
                             <Link className='link-to' to='/listar/Pessoas'><DropdownItem>Pessoas </DropdownItem></Link>
-                            <Link className='link-to' to='/listar/Produtos'><DropdownItem>Produtos</DropdownItem></Link>
+                            <Link className='link-to' to='/listar/Produto'><DropdownItem>Produtos</DropdownItem></Link>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                     <UncontrolledDropdown nav inNavbar>
@@ -48,7 +48,7 @@ function Header({ direction, ...args }) {
                             Relatórios
                         </DropdownToggle>
                         <DropdownMenu end>
-                            <DropdownItem>Lista de Pessoas </DropdownItem>
+                            <DropdownItem><Link className='link-to' to='/relatorio/pessoas'> Lista de Pessoas </Link></DropdownItem>
                             <DropdownItem>Lista de Vendas</DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

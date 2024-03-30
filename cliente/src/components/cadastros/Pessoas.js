@@ -70,7 +70,7 @@ function Pessoas() {
         }
     }
 
-    const HandleOnChance = (e) => {
+    const HandleOnChange = (e) => {
         setValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -86,13 +86,13 @@ function Pessoas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="nome">Nome Completo</Label>
-                                <Input type="text" name="nome_Pessoa" id="nome" placeholder="Nome" className="form-outline" onChange={HandleOnChance} />
+                                <Input type="text" name="nome_Pessoa" id="nome" placeholder="Nome" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="email">Email</Label>
-                                <Input type="email" name="email" id="email" placeholder="Email" className="form-outline" onChange={HandleOnChance} />
+                                <Input type="email" name="email" id="email" placeholder="Email" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -100,7 +100,7 @@ function Pessoas() {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="bairro">Bairro</Label>
-                                <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChance}>
+                                <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChange}>
                                     <option value='0' select>Escolha o Bairro</option>
                                     {bairro.map((bairro) => (
                                         <option key={bairro.id_bairro} value={bairro.id_bairro}>{bairro.nome_Bairro}</option>
@@ -111,7 +111,7 @@ function Pessoas() {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="cidade">Cidade</Label>
-                                <Input type="select" name="cidade_id" id="cidade_id" className="form-outline" onChange={HandleOnChance}>
+                                <Input type="select" name="cidade_id" id="cidade_id" className="form-outline" onChange={HandleOnChange}>
                                     <option value='0' select>Escolha o Bairro</option>
                                     {cidade.map((cidade) => (
                                         <option key={cidade.id_Cidade} value={cidade.id_Cidade}>{cidade.nome_Cidade}</option>
@@ -122,7 +122,7 @@ function Pessoas() {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="cep">CEP</Label>
-                                <InputMask mask="99999-999" onChange={HandleOnChance}>
+                                <InputMask mask="99999-999" onChange={HandleOnChange}>
                                     <Input type="text" name="cep" id="cep" placeholder="CEP" className="form-outline" />
                                 </InputMask>
 
@@ -133,19 +133,19 @@ function Pessoas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="endereco">Endereço</Label>
-                                <Input type="text" name="endereco" id="endereco" placeholder="Endereço" className="form-outline" onChange={HandleOnChance} />
+                                <Input type="text" name="endereco" id="endereco" placeholder="Endereço" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                         <Col md={2}>
                             <FormGroup>
                                 <Label for="numero">Número</Label>
-                                <Input type="text" name="numero" id="numero" placeholder="Número" className="form-outline" onChange={HandleOnChance} />
+                                <Input type="text" name="numero" id="numero" placeholder="Número" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="complemento">Complemento</Label>
-                                <Input type="text" name="complemento" id="complemento" placeholder="Complemento" className="form-outline" onChange={HandleOnChance} />
+                                <Input type="text" name="complemento" id="complemento" placeholder="Complemento" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -153,8 +153,8 @@ function Pessoas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="telefone">Telefone</Label>
-                                <InputMask mask='(99) 9 9999-9999' onChange={HandleOnChance}>
-                                    <Input type="text" name="telefone" id="telefone" placeholder="Telefone" className="form-outline" onChange={HandleOnChance} />
+                                <InputMask mask='(99) 9 9999-9999' onChange={HandleOnChange}>
+                                    <Input type="text" name="telefone" id="telefone" placeholder="Telefone" className="form-outline" onChange={HandleOnChange} />
                                 </InputMask>
                             </FormGroup>
                         </Col>

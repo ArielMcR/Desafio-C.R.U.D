@@ -23,6 +23,36 @@ const pessoasController = {
             }
         });
     },
+    getByFilters: (req, res) => {
+        const { parteDoNome, cidade_id, bairro_id } = req.body
+
+
+        let baseQuery = "SELECT id_Pessoa, nome_Pessoa, cidade.nome_Cidade, telefone FROM Pessoa INNER JOIN Cidade ON Pessoa.cidade_id = Cidade.id_Cidade INNER JOIN Bairro ON Pessoa.bairro_id = Bairro.id_bairro"
+        let conditions = [];
+
+        if (parteDoNome) {
+            conditions.push(`nome_Pessoa LIKE '%${parteDoNome}%' `);
+        }
+        if (cidade_id) {
+            conditions.push(`cidade_id = ${cidade_id}`);
+        }
+        if (bairro_id) {
+            conditions.push(`bairro_id = ${bairro_id}`);
+        }
+
+        if (conditions.length) {
+            baseQuery += " WHERE " + conditions.join(" AND ");
+        }
+        db.query(baseQuery, (error, results) => {
+            if (error) {
+                console.log(error);
+                res.status(500).send('Erro ao realizar a consulta');
+            } else {
+                res.json(results);
+            }
+        });
+
+    },
     update: (req, res) => {
         const city_id = req.params.id;
         const q = "UPDATE Pessoa SET `nome_Pessoa` = ?,`cep`=?, `endereco`= ?,`numero`= ?,`complemento`= ?,`telefone`= ?,`email`= ?,`cidade_id`= ?, `bairro_id`= ? WHERE id_Pessoa = ?"
