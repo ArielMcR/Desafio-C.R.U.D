@@ -23,9 +23,9 @@ function ListarBairro() {
 
     const HandleClickButton = async (bairro_id) => {
         try {
+            toast.warning('Bairro excluído com sucesso')
             await axios.delete('http://localhost:3001/bairro/' + bairro_id);
             setReload(!reload)
-            localStorage.setItem('notification', 'Bairro excluída com sucesso');
             history.back();
         } catch (error) {
             console.log('Erro ao excluir Bairro:', error);

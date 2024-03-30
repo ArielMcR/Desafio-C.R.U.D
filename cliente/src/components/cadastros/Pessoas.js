@@ -62,11 +62,12 @@ function Pessoas() {
             }
         }
         try {
-            await axios.post('http://localhost:3001/pessoas', formValues)
+            const res = await axios.post('http://localhost:3001/pessoas', formValues)
             localStorage.setItem('notification', 'Pessoa criada com sucesso',);
             history('/listar/Pessoas')
         } catch (error) {
-            toast('Ocorreu algum erro, tente novamente', 'error')
+            toast.error('Algum erro aconteceu ')
+
         }
     }
 

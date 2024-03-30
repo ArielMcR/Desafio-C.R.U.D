@@ -20,13 +20,13 @@ function Listar_cidade() {
 
     useEffect(() => {
         fetchCidades()
-    }) 
+    })
 
     const HandleClickButton = async (cidade_id) => {
         try {
+            toast.warning('Cidade excluída com sucesso');
             await axios.delete('http://localhost:3001/cidade/' + cidade_id);
             setReload(!reload)
-            localStorage.setItem('notification', 'Cidade excluída com sucesso');
             history.back();
         } catch (error) {
             console.log('Erro ao excluir cidade:', error);

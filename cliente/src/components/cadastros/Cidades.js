@@ -29,6 +29,12 @@ function Cidade() {
     }
     const HandleClickButton = async (e) => {
         e.preventDefault()
+        for (let field in city) {
+            if (!city[field]) {
+                toast.error("Por favor, preencha todos os campos.")
+                return
+            }
+        }
         try {
             await axios.post('http://localhost:3001/cidade', city)
             localStorage.setItem('notification', "cidade cadastrada com sucesso!");

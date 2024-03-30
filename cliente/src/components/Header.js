@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
 import {
-    // Collapse,
+
     Navbar,
-    // NavbarToggler,
+
     NavbarBrand,
     Nav,
     NavItem,

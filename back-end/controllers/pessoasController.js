@@ -88,9 +88,17 @@ const pessoasController = {
         req.body.bairro_id,];
         db.query(q, values, (err, data) => {
             if (err) {
-                console.error(err);
+                if (error.code === 'ER_DUP_ENTRY') {
+                    // Tratar o erro de entrada duplicada
+                    res.status(400).send('O email já está em uso.');
+                } else {
+                    // Tratar outros erros
+                    res.status(500).send('Ocorreu um erro desconhecido.');
+                }
+            } else {
+
+                return res.json(data);
             }
-            return res.json(data);
         });
     },
     delete: (req, res) => {
@@ -100,6 +108,7 @@ const pessoasController = {
             if (err) {
                 console.error(err);
             } else {
+
             }
         });
     }
