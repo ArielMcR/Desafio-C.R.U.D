@@ -5,6 +5,8 @@ Este projeto é um sistema de gestão de vendas na web. Usamos React JS para cri
 - [Observações](#observações)
 - [Instalação](#instalação)
 - [Uso](#uso)
+- [Pastas](#Pasta)
+- [Endpoints API](#Endpoints)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
@@ -36,7 +38,7 @@ Para começar a utilizar o projeto, siga estas etapas simples:
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd react
+    cd Desafio-C.R.U.D
     ```
 
 3. Instale as dependências:
@@ -83,6 +85,18 @@ Para usar o projeto, siga estas instruções:
     cd back-end
     ````
 4. Dentro da pasta rodamos novamente o comando `npm start`
+5. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
+## Pastas
+*Back-end* 
+
+*controllers: Esta pasta contém todos os controladores dos endpoints da API. Cada controlador é responsável por manipular as solicitações e respostas, executando a lógica de negócios necessária.
+data: A pasta data é onde os dados estáticos ou arquivos de configuração podem ser armazenados para fácil acesso e organização.
+
+*index.js: É o arquivo principal que inicia o servidor e contém configurações globais, como middleware, rotas e outras configurações essenciais.
+
+*package-lock.json e package.json: Estes arquivos contêm informações sobre o projeto e suas dependências. O package.json é usado para gerenciar as dependências, enquanto o package-lock.json bloqueia as versões das dependências instaladas para garantir a consistência entre os ambientes de desenvolvimento.
+
+## Endpoints
 
 ## Contribuição
 
