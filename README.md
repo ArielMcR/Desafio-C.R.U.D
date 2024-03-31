@@ -36,7 +36,7 @@ Para começar a utilizar o projeto, siga estas etapas simples:
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd react
+    cd Desafio-C.R.U.D
     ```
 
 3. Instale as dependências:
@@ -83,6 +83,7 @@ Para usar o projeto, siga estas instruções:
     cd back-end
     ````
 4. Dentro da pasta rodamos novamente o comando `npm start`
+5. Com ambos funcionando você pode acesar [localhost](htpp://localhost:3000/)
 
 ## Contribuição
 
