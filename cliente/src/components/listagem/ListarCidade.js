@@ -5,13 +5,15 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 function Listar_cidade() {
+    const host = 'http://localhost:3001'
+
     const [cidade, setCidade] = useState([])
     const [reload, setReload] = useState(false)
     const history = useNavigate();
 
     const fetchCidades = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/cidade')
+            const res = await axios.get(`${host}/cidade`)
             setCidade(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -25,7 +27,7 @@ function Listar_cidade() {
     const HandleClickButton = async (cidade_id) => {
         try {
             toast.warning('Cidade excluída com sucesso');
-            await axios.delete('http://localhost:3001/cidade/' + cidade_id);
+            await axios.delete(`${host}/cidade/` + cidade_id);
             setReload(!reload)
             history.back();
         } catch (error) {
@@ -85,10 +87,10 @@ function Listar_cidade() {
                         </tbody>
                     </Table>
                 </div>
-            ):(
-                    <div className="text-center">
-                        Nenhum dado cadastrado
-                    </div>
+            ) : (
+                <div className="text-center">
+                    Nenhum dado cadastrado
+                </div>
             )}
 
 

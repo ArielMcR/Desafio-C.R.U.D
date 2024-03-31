@@ -9,6 +9,8 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 
 function Vendas() {
+    const host = 'http://localhost:3001'
+
     const history = useNavigate()
     const [formValues, setValues] = useState({
         'venda_id': 0,
@@ -51,6 +53,7 @@ function Vendas() {
         setCartItems(newCartItems);
     };
     const HandleClickButton = async () => {
+        const host = 'http://localhost:3001'
 
         if (!venda.dt_Venda || venda.pessoa_id === 0 || venda.vr_Total === 0 || formValues.produto_id === 0 || formValues.qtade === 0 || formValues.vr_Venda === 0) {
             toast.error('Preencha todos os campos');
@@ -59,7 +62,7 @@ function Vendas() {
 
         try {
             console.log('Criando venda')
-            const res = await axios.post('http://localhost:3001/venda', venda);
+            const res = await axios.post(`${host}/venda`, venda);
             console.log('Venda criada')
             const valor_Id = res.data.id
             console.log(valor_Id)
@@ -68,7 +71,7 @@ function Vendas() {
             console.log(updatedCartItems)
 
             for (const produto of updatedCartItems) {
-                await axios.post('http://localhost:3001/vendaItens', produto);
+                await axios.post(`${host}/vendaItens`, produto);
             }
 
             history('/listar/Vendas')
@@ -131,7 +134,7 @@ function Vendas() {
 
     const fetchProdutos = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/produto')
+            const res = await axios.get(`${host}/produto`)
             setProdutos(res.data)
         } catch (error) {
 
@@ -140,7 +143,7 @@ function Vendas() {
     }
     const fetchPessoa = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/pessoas')
+            const res = await axios.get(`${host}/pessoas`)
             setPessoa(res.data)
         } catch (error) {
 

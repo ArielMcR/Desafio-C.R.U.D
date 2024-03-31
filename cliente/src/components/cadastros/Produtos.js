@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from "react-toastify";
 
 function Produto() {
+    const host = 'http://localhost:3001'
+
     const history = useNavigate()
     const navigation = useNavigate()
 
@@ -45,7 +47,7 @@ function Produto() {
             }
         }
         try {
-            await axios.post('http://localhost:3001/produto', formValues)
+            await axios.post(`${host}/produto`, formValues)
             localStorage.setItem('notification', 'Produto criado com sucesso',);
             history('/listar/Produto')
         } catch (error) {

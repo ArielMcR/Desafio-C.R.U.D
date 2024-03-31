@@ -7,6 +7,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { set } from 'date-fns';
 function RelatorioVendas() {
+    const host = 'http://localhost:3001'
     const [venda, setVenda] = useState([])
     const [produto, setProduto] = useState([])
     const [pessoas, setPessoas] = useState([])
@@ -20,7 +21,7 @@ function RelatorioVendas() {
     })
     const fetchVendas = async () => {
         try {
-            const res = await axios.post('http://localhost:3001/vendaItens/search')
+            const res = await axios.post(`${host}/vendaItens/search`)
             let uniqueArray = res.data.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i);
             setVenda(uniqueArray)
         } catch (err) {
@@ -30,7 +31,7 @@ function RelatorioVendas() {
     console.log(venda)
     const fetchPessoas = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/pessoas')
+            const res = await axios.get(`${host}/pessoas`)
             setPessoas(res.data)
         } catch (error) {
             console.log("error")
@@ -38,7 +39,7 @@ function RelatorioVendas() {
     }
     const fetchProdutos = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/produto')
+            const res = await axios.get(`${host}/produto`)
             setProduto(res.data)
         } catch (err) {
             console.log('Erro ao buscar produto:', err);
@@ -62,7 +63,7 @@ function RelatorioVendas() {
     }, [venda]);
 
     const HandleClickButton = async () => {
-        const res = await axios.post('http://localhost:3001/vendaItens/search', search)
+        const res = await axios.post(`${host}/vendaItens/search`, search)
         let uniqueArray = res.data.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i);
         setVenda(uniqueArray)
     }

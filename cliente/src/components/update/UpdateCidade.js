@@ -6,6 +6,8 @@ import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 function UpdateCidade() {
+    const host = 'http://localhost:3001'
+
     const [value, setValue] = useState({});
     const [formValues, setValues] = useState({
         nome_Cidade: '',
@@ -16,7 +18,7 @@ function UpdateCidade() {
     const cidade_Id = location.pathname.split('/')[3];
 
     useEffect(() => {
-        axios.get('http://localhost:3001/cidade/' + cidade_Id)
+        axios.get(`${host}/cidade/` + cidade_Id)
             .then(res => {
                 const cidadeData = res.data[0];
                 setValue({
@@ -57,7 +59,7 @@ function UpdateCidade() {
         try {
             navigation('/listar/Cidade');
             localStorage.setItem('notification', 'Dados atualizados com sucesso');
-            await axios.put('http://localhost:3001/cidade/' + cidade_Id, formValues);
+            await axios.put(`${host}/cidade/` + cidade_Id, formValues);
         } catch (err) {
             toast.error("Erro ao atualizar!");
         }

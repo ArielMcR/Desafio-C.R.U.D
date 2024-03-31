@@ -6,6 +6,8 @@ import { IoSearch } from "react-icons/io5";
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 function Pessoas() {
+    const host = 'http://localhost:3001'
+
     const [pessoas, setPessoas] = useState([])
     const [cidade, setCidade] = useState([])
     const [bairro, setBairro] = useState([])
@@ -17,7 +19,7 @@ function Pessoas() {
     })
     const fetchPessoas = async () => {
         try {
-            const res = await axios.post('http://localhost:3001/pessoas/search')
+            const res = await axios.post(`${host}/pessoas/search`)
             setPessoas(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -25,7 +27,7 @@ function Pessoas() {
     }
     const fetchBairro = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/bairro')
+            const res = await axios.get(`${host}/bairro`)
             setBairro(res.data)
         } catch (error) {
             console.log("error")
@@ -33,7 +35,7 @@ function Pessoas() {
     }
     const fetchCidades = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/cidade')
+            const res = await axios.get(`${host}/cidade`)
             setCidade(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -51,7 +53,7 @@ function Pessoas() {
     };
 
     const HandleClickButton = async () => {
-        const res = await axios.post('http://localhost:3001/pessoas/search', search)
+        const res = await axios.post(`${host}/pessoas/search`, search)
         setPessoas(res.data)
     }
 
@@ -90,7 +92,7 @@ function Pessoas() {
                             <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChange}>
                                 <option value='' select>Escolha o Bairro</option>
                                 {bairro.map((bairro) => (
-                                    <option key={bairro.id_bairro} value={bairro.id_bairro}>{bairro.nome_Bairro}</option>
+                                    <option key={bairro.id_Bairro} value={bairro.id_Bairro}>{bairro.nome_Bairro}</option>
                                 ))}
                             </Input>
                         </FormGroup>

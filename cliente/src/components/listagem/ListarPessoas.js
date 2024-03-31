@@ -5,13 +5,15 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 function ListarPessoas() {
+    const host = 'http://localhost:3001'
+
     const [pessoas, setPessoas] = useState([])
     const [reload, setReload] = useState(false)
     const history = useNavigate();
 
     const fetchPessoas = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/pessoas')
+            const res = await axios.get(`${host}/pessoas`)
             setPessoas(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -25,7 +27,7 @@ function ListarPessoas() {
     const HandleClickButton = async (pessoas_id) => {
         try {
             toast.success('Excluído com sucesso')
-            await axios.delete('http://localhost:3001/pessoas/' + pessoas_id);
+            await axios.delete(`${host}/pessoas/` + pessoas_id);
             setReload(!reload)
             history('/listar/Pessoas');
         } catch (error) {

@@ -5,6 +5,8 @@ import { Input, Button } from "reactstrap"
 import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 function Cidade() {
+    const host = 'http://localhost:3001'
+
     const [city, setCity] = useState({
         nome_Cidade: '',
         sigla_Uf: '',
@@ -25,7 +27,7 @@ function Cidade() {
             }
         }
         try {
-            await axios.post('http://localhost:3001/cidade', city)
+            await axios.post(`${host}/cidade`, city)
             localStorage.setItem('notification', "cidade cadastrada com sucesso!");
             navigate('/listar/Cidade')
         } catch (err) {

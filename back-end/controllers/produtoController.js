@@ -17,7 +17,7 @@ const produtoController = {
         db.query(q, [produto_Id], (err, data) => {
             if (err) {
                 console.error(err);
-                res.status(500).send("Erro ao buscar bairro.");
+                res.status(500).send("Erro ao buscar Produto.");
             } else {
                 res.status(200).send(data[0]);
             }
@@ -35,7 +35,6 @@ const produtoController = {
                 console.log("Erro ao atualizar o produto:", err);
                 res.status(500).send("Erro ao excluir produto.");
             } else {
-                console.log("Resultado da consulta:", data); 
                 res.status(200).send("produto atualizada com sucesso.");
             }
         })

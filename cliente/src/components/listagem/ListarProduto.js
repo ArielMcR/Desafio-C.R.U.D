@@ -5,13 +5,15 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 function ListarProduto() {
+    const host = 'http://localhost:3001'
+
     const [produto, setProduto] = useState([])
     const [reload, setReload] = useState(false)
     const history = useNavigate();
 
     const fetchProduto = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/produto')
+            const res = await axios.get(`${host}/produto`)
             setProduto(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -25,7 +27,7 @@ function ListarProduto() {
     const HandleClickButton = async (produto_id) => {
         try {
             toast.success('Excluído com sucesso')
-            await axios.delete('http://localhost:3001/produto/' + produto_id);
+            await axios.delete(`${host}/produto/` + produto_id);
             setReload(!reload)
             history('/listar/produto');
         } catch (error) {

@@ -8,12 +8,14 @@ import { toast, ToastContainer } from "react-toastify";
 
 
 function ListarVenda() {
+    const host = 'http://localhost:3001'
+
     const history = useNavigate()
     const [reload, setReload] = useState(true)
     const [venda, setVenda] = useState([])
     const fetchVenda = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/venda')
+            const res = await axios.get(`${host}/venda`)
             setVenda(res.data)
         } catch (error) {
             toast.error('Algum erro aconteceu!!!')
@@ -28,7 +30,7 @@ function ListarVenda() {
 
     const HandleClickButton = async (id) => {
         try {
-            await axios.delete('http://localhost:3001/vendaItens/' + id)
+            await axios.delete(`${host}/vendaItens/` + id)
             setReload(!reload)
             toast.success('Excluído com sucesso')
             history('/listar/Vendas');

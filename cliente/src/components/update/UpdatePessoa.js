@@ -8,6 +8,7 @@ import InputMask from "react-input-mask";
 
 
 function UpdatePessoa() {
+    const host = 'http://localhost:3001'
 
     const navigation = useNavigate()
     const [cidade, setCidade] = useState([]);
@@ -29,7 +30,7 @@ function UpdatePessoa() {
     const pessoa_id = location.pathname.split('/')[3]
 
     useEffect(() => {
-        axios.get('http://localhost:3001/pessoas/' + pessoa_id)
+        axios.get(`${host}/pessoas/` + pessoa_id)
             .then(res => {
                 const pessoaData = res.data[0];
                 setValues({
@@ -52,7 +53,7 @@ function UpdatePessoa() {
 
     const fetchCidade = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/cidade')
+            const res = await axios.get(`${host}/cidade`)
             setCidade(res.data)
         } catch {
             console.log('Erro ao buscar dados:')
@@ -60,7 +61,7 @@ function UpdatePessoa() {
     }
     const fetchBairro = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/bairro')
+            const res = await axios.get(`${host}/bairro`)
             setBairro(res.data)
         } catch {
             console.log('Erro ao buscar dados:')
@@ -86,7 +87,7 @@ function UpdatePessoa() {
         try {
             navigation('/listar/Pessoas')
             localStorage.setItem('notification', 'Dados atualizados com sucesso');
-            await axios.put('http://localhost:3001/pessoas/' + pessoa_id, formValues)
+            await axios.put(`${host}/pessoas/` + pessoa_id, formValues)
         } catch (err) {
             toast.error("Erro ao atualizar!")
 

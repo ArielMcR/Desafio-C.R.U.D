@@ -6,6 +6,8 @@ import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 function UpdateBairro() {
+    const host = 'http://localhost:3001'
+
     const navigation = useNavigate()
     const [formValues, setFormValues] = useState({
         nome_Bairro: '',
@@ -14,7 +16,7 @@ function UpdateBairro() {
     const bairro_id = location.pathname.split('/')[3]
 
     useEffect(() => {
-        axios.get('http://localhost:3001/bairro/' + bairro_id)
+        axios.get(`${host}/bairro/` + bairro_id)
             .then(res => {
                 const bairroData = res.data[0];
                 setFormValues({
@@ -35,7 +37,7 @@ function UpdateBairro() {
     const HandleClickButton = async (e) => {
         e.preventDefault()
         try {
-            await axios.put('http://localhost:3001/bairro/' + bairro_id, formValues)
+            await axios.put(`${host}/bairro/` + bairro_id, formValues)
             localStorage.setItem('notification', 'Dados atualizados com sucesso');
             navigation('/listar/Bairro')
         } catch (err) {

@@ -7,6 +7,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 
 function UpdateProdutos() {
+    const host = 'http://localhost:3001'
+
+
     const [value, setValue] = useState({});
     const [formValues, setValues] = useState({
         nome_Produto: '',
@@ -17,16 +20,16 @@ function UpdateProdutos() {
     const produto_id = location.pathname.split('/')[3];
 
     useEffect(() => {
-        axios.get('http://localhost:3001/produto/' + produto_id)
+        axios.get(`${host}/produto/` + produto_id)
             .then(res => {
-                const produtoData = res.data[0];
+                const produtoData = res.data;
                 setValue({
-                    nome_Produto: produtoData.nome_Produto,
-                    vr_Venda: produtoData.vr_Venda,
+                    'nome_Produto': produtoData.nome_Produto,
+                    'vr_Venda': produtoData.vr_Venda,
                 });
                 setValues({
-                    nome_Produto: produtoData.nome_Produto,
-                    vr_Venda: produtoData.vr_Venda,
+                    'nome_Produto': produtoData.nome_Produto,
+                    'vr_Venda': produtoData.vr_Venda,
                 });
             })
 
@@ -34,7 +37,7 @@ function UpdateProdutos() {
                 console.log('Erro ao buscar dados:', error);
                 toast.error('Algum erro aconteceu, redirecionando em 3 segundos');
                 setTimeout(() => {
-                    navigation('listar/Produto');
+                    navigation('/listar/Produto');
                 }, 3000);
             });
     }, [produto_id, navigation]);
@@ -75,7 +78,7 @@ function UpdateProdutos() {
         try {
             navigation('/listar/Produto');
             localStorage.setItem('notification', 'Dados atualizados com sucesso');
-            await axios.put('http://localhost:3001/produto/' + produto_id, formValues);
+            await axios.put(`${host}/produto/` + produto_id, formValues);
         } catch (err) {
             toast.error("Erro ao atualizar!");
         }
@@ -86,7 +89,7 @@ function UpdateProdutos() {
             autoClose: 3000
         });
         setTimeout(() => {
-            navigation('/listar/Pessoas');
+            navigation('/listar/Produto');
         }, 3500);
     };
 

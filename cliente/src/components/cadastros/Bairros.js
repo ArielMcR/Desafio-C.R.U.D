@@ -7,6 +7,8 @@ import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 function Bairro() {
+    const host = 'http://localhost:3001'
+
     const [bairro, setBairro] = useState({
         nome_Bairro: '',
     })
@@ -24,7 +26,7 @@ function Bairro() {
             toast.warning('Por favor preencha todos os campos')
         }
         try {
-            await axios.post('http://localhost:3001/bairro', bairro)
+            await axios.post(`${host}/bairro`, bairro)
             localStorage.setItem('notification', "Bairro cadastrado com sucesso!");
             history('/listar/Bairro')
         } catch (err) {

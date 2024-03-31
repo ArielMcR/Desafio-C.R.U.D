@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from "react-toastify";
 
 function Pessoas() {
+    const host = 'http://localhost:3001'
+
     const history = useNavigate()
     const [cidade, setCidade] = useState([])
     const [bairro, setBairro] = useState([])
@@ -28,7 +30,7 @@ function Pessoas() {
     );
     const fetchBairro = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/bairro')
+            const res = await axios.get(`${host}/bairro`)
             setBairro(res.data)
         } catch (error) {
             console.log("error")
@@ -42,7 +44,7 @@ function Pessoas() {
 
     const fetchCidades = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/cidade')
+            const res = await axios.get(`${host}/cidade`)
             setCidade(res.data)
         } catch (err) {
             console.log('Erro ao buscar cidades:', err);
@@ -63,7 +65,7 @@ function Pessoas() {
         }
         console.log(formValues)
         try {
-            await axios.post('http://localhost:3001/pessoas', formValues)
+            await axios.post(`${host}/pessoas`, formValues)
             localStorage.setItem('notification', 'Pessoa criada com sucesso',);
             history('/listar/Pessoas')
         } catch (error) {
