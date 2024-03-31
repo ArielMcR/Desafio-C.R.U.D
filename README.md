@@ -5,6 +5,7 @@ Este projeto é um sistema de gestão de vendas na web. Usamos React JS para cri
 - [Observações](#observações)
 - [Instalação](#instalação)
 - [Uso](#uso)
+- [Endpoints API](#Endpoints)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
@@ -84,6 +85,8 @@ Para usar o projeto, siga estas instruções:
     ````
 4. Dentro da pasta rodamos novamente o comando `npm start`
 5. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
+
+## Endpoints
 
 ## Contribuição
 
