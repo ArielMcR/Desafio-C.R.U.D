@@ -23,6 +23,36 @@ const vendaItemController = {
             }
         });
     },
+
+    getByFilters: (req, res) => {
+        const { dataInicio, dataFinal, produto_id, pessoa_id } = req.body
+
+        let baseQuery = "SELECT Venda.id, Pessoa.nome_Pessoa,Venda.vr_Total FROM Venda_Itens INNER JOIN Venda ON Venda_Itens.venda_id = Venda.id INNER JOIN  Pessoa ON Venda.pessoa_id = pessoa.id_Pessoa "
+        let conditions = [];
+
+        if (dataInicio, dataFinal) {
+            conditions.push(`venda.dt_Venda BETWEEN '${dataInicio}' AND '${dataFinal}';`);
+        }
+        if (produto_id) {
+            conditions.push(`venda_Itens.produto_id = ${produto_id}`);
+        }
+        if (pessoa_id) {
+            conditions.push(`Venda.pessoa_id = ${pessoa_id}`);
+        }
+
+        if (conditions.length) {
+            baseQuery += " WHERE " + conditions.join(" AND ");
+        }
+        db.query(baseQuery, (error, results) => {
+            if (error) {
+                console.log(error);
+                res.status(500).send('Erro ao realizar a consulta');
+            } else {
+                res.json(results);
+            }
+        });
+
+    },
     update: (req, res) => {
         const venda_id = req.params.id;
         const q = "UPDATE venda_Itens SET `venda_id` = ?, `produto_id` = ?, `vr_Venda` = ?, `qtade`= ? WHERE venda_id = ?"
@@ -37,7 +67,7 @@ const vendaItemController = {
                 console.log("Erro ao atualizar a venda:", err);
                 res.status(500).send("Erro ao excluir produto.");
             } else {
-                console.log("Resultado da consulta:", data); 
+                console.log("Resultado da consulta:", data);
                 res.status(200).send("Venda atualizada com sucesso.");
             }
         })

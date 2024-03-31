@@ -34,7 +34,7 @@ const bairroController = {
                 console.log("Erro ao atualizar bairro:", err);
                 res.status(500).send("Erro ao excluir bairro.");
             } else {
-                console.log("Resultado da consulta:", data); 
+                console.log("Resultado da consulta:", data);
                 res.status(200).send("bairro atualizada com sucesso.");
             }
         })
@@ -45,11 +45,11 @@ const bairroController = {
 
         db.query(verificar_bairro, [req.body.nome_Bairro], (err, result) => {
             if (err) {
-                console.error('Erro ao verificar o produto:', err);
-                return res.status(500).json({ error: 'Ocorreu um erro ao verificar o produto' });
+                console.error('Erro ao verificar o Bairro:', err);
+                return res.status(500).json({ error: 'Ocorreu um erro ao verificar o Bairro' });
             }
             if (result.length > 0) {
-                return res.status(400).json({ error: 'Produto já está cadastrado' });
+                return res.status(400).json({ error: 'Bairro já está cadastrado' });
             } else {
                 const q = "INSERT INTO Bairro (nome_Bairro) VALUES (?)";
                 db.query(q, values, (err, data) => {

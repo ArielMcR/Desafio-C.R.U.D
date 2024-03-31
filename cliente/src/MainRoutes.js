@@ -16,6 +16,7 @@ import ListarVenda from "./components/listagem/ListarVenda";
 import Vendas from "./components/cadastros/Vendas";
 import UpdateVenda from "./components/update/UpdateVenda";
 import RelatorioPessoas from "./components/relatorios/RelatorioPessoas"
+import RelatorioVendas from "./components/relatorios/RelatorioVendas"
 function MainRoutes() {
     return (
         <Routes>
@@ -29,6 +30,7 @@ function MainRoutes() {
 
             {/* Relatórios */}
             <Route path="/relatorio/Pessoas" element={<RelatorioPessoas />} />
+            <Route path="/relatorio/Vendas" element={<RelatorioVendas />} />
 
 
             {/* Cadastro dos dados */}

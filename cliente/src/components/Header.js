@@ -49,7 +49,7 @@ function Header({ direction, ...args }) {
                         </DropdownToggle>
                         <DropdownMenu end>
                             <DropdownItem><Link className='link-to' to='/relatorio/pessoas'> Lista de Pessoas </Link></DropdownItem>
-                            <DropdownItem>Lista de Vendas</DropdownItem>
+                            <DropdownItem><Link className='link-to' to='/relatorio/Vendas'> Lista de Vendas </Link></DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Nav>

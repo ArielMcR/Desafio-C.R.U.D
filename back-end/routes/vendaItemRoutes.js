@@ -6,6 +6,7 @@ const vendaItemRoutes = express.Router()
 vendaItemRoutes.get('/', vendaItemController.getAll)
 vendaItemRoutes.get('/:id', vendaItemController.getById)
 vendaItemRoutes.post('/', vendaItemController.create)
+vendaItemRoutes.post('/search', vendaItemController.getByFilters)
 vendaItemRoutes.put('/:id', vendaItemController.update)
 vendaItemRoutes.delete('/:id', vendaItemController.delete)
 

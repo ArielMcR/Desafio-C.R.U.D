@@ -61,6 +61,7 @@ function Pessoas() {
                 return
             }
         }
+        console.log(formValues)
         try {
             await axios.post('http://localhost:3001/pessoas', formValues)
             localStorage.setItem('notification', 'Pessoa criada com sucesso',);
@@ -109,7 +110,7 @@ function Pessoas() {
                                 <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChange}>
                                     <option value='0' select>Escolha o Bairro</option>
                                     {bairro.map((bairro) => (
-                                        <option key={bairro.id_bairro} value={bairro.id_bairro}>{bairro.nome_Bairro}</option>
+                                        <option key={bairro.id_Bairro} value={bairro.id_Bairro}>{bairro.nome_Bairro}</option>
                                     ))}
                                 </Input>
                             </FormGroup>

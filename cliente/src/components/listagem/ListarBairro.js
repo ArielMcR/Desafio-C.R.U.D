@@ -64,8 +64,8 @@ function ListarBairro() {
                         </thead>
                         <tbody>
                             {bairro.map((bairro) => (
-                                <tr key={bairro.id_bairro}>
-                                    <td>{bairro.id_bairro + 1}</td>
+                                <tr key={bairro.id_Bairro}>
+                                    <td>{bairro.id_Bairro}</td>
                                     <td>{bairro.nome_Bairro}</td>
                                     <td className='text-center'>
                                         <Link to={`/update/bairro/${bairro.id_bairro}`}>
