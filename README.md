@@ -87,16 +87,28 @@ Para usar o projeto, siga estas instruções:
 4. Dentro da pasta rodamos novamente o comando `npm start`
 5. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
 ## Pastas
-*Back-end* 
+**Back-end**
+* **controllers**: Esta pasta contém todos os controladores dos endpoints da API. Cada controlador é responsável por manipular as solicitações e respostas, executando a lógica de negócios necessária.
+* **data**: A pasta data é onde está a conexão com a base de dados.
+* **index.js**: É o arquivo principal que inicia o servidor e contém configurações globais, como middleware, rotas e outras configurações essenciais.
+* **package-lock.json** e **package.json**: Estes arquivos contêm informações sobre o projeto e suas dependências. O package.json é usado para gerenciar as dependências, enquanto o package-lock.json bloqueia as versões das dependências instaladas para garantir a consistência entre os ambientes de desenvolvimento.
 
-*controllers: Esta pasta contém todos os controladores dos endpoints da API. Cada controlador é responsável por manipular as solicitações e respostas, executando a lógica de negócios necessária.
-data: A pasta data é onde os dados estáticos ou arquivos de configuração podem ser armazenados para fácil acesso e organização.
-
-*index.js: É o arquivo principal que inicia o servidor e contém configurações globais, como middleware, rotas e outras configurações essenciais.
-
-*package-lock.json e package.json: Estes arquivos contêm informações sobre o projeto e suas dependências. O package.json é usado para gerenciar as dependências, enquanto o package-lock.json bloqueia as versões das dependências instaladas para garantir a consistência entre os ambientes de desenvolvimento.
+**Front-end**
+- **src**: Esta é a pasta principal que contém todo o código fonte aplicativo React.
+    - **components**: Esta pasta contém todos os componentes React. Cada componente é responsável por uma parte específica da interface do usuário do aplicativo.
+        - **cadastros**: Esta pasta contém componentes relacionados ao cadastro de dos dados como Produto, Pessoa, Bairro, Cidade e Vendas.
+        - **HomePage**: Esta pasta contém o componente da página inicial do aplicativo.
+        - **listagem**: Esta pasta contém componentes que lidam com a listagem dos dados.
+        - **relatorios**: Esta pasta contém componentes que lidam com a geração e exibição de relatórios de Pessoas e Vendas.
+        - **update**: Esta pasta contém componentes que lidam com a atualização dos dados.
+        - **Footer.js**: Este arquivo é o componente que representa o rodapé do aplicativo.
+        - **Header.js**: Este arquivo é o componente que representa o cabeçalho do aplicativo.
+        - **App.js**: Este é o componente raiz do aplicativo React.
+    - **index.js**: Este é o ponto de entrada. É aqui que o componente raiz do seu aplicativo é renderizado no DOM.
+    - **MainRoutes.js**: Este arquivo contém as rotas principais do  aplicativo, definindo qual componente deve ser renderizado com base na URL.
 
 ## Endpoints
+
 
 ## Contribuição
 
