@@ -4,7 +4,7 @@ import { Form, FormGroup, Label, Input, Row, Col, Table, Button } from 'reactstr
 import { IoSearch } from "react-icons/io5";
 
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 function Pessoas() {
     const host = 'http://localhost:3001'
 

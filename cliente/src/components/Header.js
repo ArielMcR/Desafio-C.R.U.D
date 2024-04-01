@@ -57,13 +57,7 @@ function Header({ direction, ...args }) {
                     <div className="dropdown">
                         <Dropdown isOpen={dropdownOpen} toggle={toggle} direction={direction} color='primary'>
                             <DropdownToggle caret><FaCircleUser /></DropdownToggle>
-                            <DropdownMenu {...args}>
-                                <DropdownItem header>Header</DropdownItem>
-                                <DropdownItem>Some Action</DropdownItem>
-                                <DropdownItem text>Dropdown Item Text</DropdownItem>
-                                <DropdownItem >Sair</DropdownItem>
-                                <DropdownItem divider />
-                            </DropdownMenu>
+
                         </Dropdown>
                     </div>
                 </NavbarText>

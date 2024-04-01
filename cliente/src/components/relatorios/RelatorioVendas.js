@@ -4,8 +4,8 @@ import { Form, FormGroup, Label, Input, Row, Col, Table, Button } from 'reactstr
 import { IoSearch } from "react-icons/io5";
 
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import { set } from 'date-fns';
+import { ToastContainer } from 'react-toastify'
+
 function RelatorioVendas() {
     const host = 'http://localhost:3001'
     const [venda, setVenda] = useState([])
