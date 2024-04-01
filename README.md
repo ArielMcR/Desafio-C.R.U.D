@@ -1,5 +1,5 @@
 # C.R.U.D Projeto de desenvolvimento para vaga de estágio.
-Este projeto é um sistema de gestão de vendas na web. Usamos React JS para criar a interface do usuário. Axios e Express JS são usados para conectar o front-end e o back-end. E o back-end é construído com Node.js.
+Este projeto consiste em um sistema de gestão de vendas online. A interface do usuário é desenvolvida com React JS, proporcionando uma experiência interativa. Para a comunicação entre o front-end e o back-end, utilizamos Axios para requisições HTTP e Express JS para configurar o servidor. O back-end é robustamente construído com Node.js, garantindo escalabilidade e eficiência no processamento das operações de vendas.
 ## Índice
 
 - [Observações](#observações)
