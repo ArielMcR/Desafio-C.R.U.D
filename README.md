@@ -8,7 +8,6 @@ Este projeto consiste em um sistema de gestão de vendas online. A interface do 
 - [Pastas](#Pasta)
 - [Endpoints API](#Endpoints)
 - [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Observações
 Para este projeto é estritamente necessário o uso do Node JS e MySql, caso não possua nenhum dos dois basta acessar o link abaixo e realizar a instalação:
