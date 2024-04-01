@@ -7,6 +7,7 @@ import Header from "../Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 function Bairro() {
+    const navigation = useNavigate()
     const host = 'http://localhost:3001'
 
     const [bairro, setBairro] = useState({
@@ -24,6 +25,7 @@ function Bairro() {
 
         if (bairro.nome_Bairro === '' || bairro.nome_Bairro === undefined) {
             toast.warning('Por favor preencha todos os campos')
+            return
         }
         try {
             await axios.post(`${host}/bairro`, bairro)
@@ -38,8 +40,14 @@ function Bairro() {
             }
         }
     }
-    const HandleClickReturn = () => {
-        history('/listar/Bairro')
+    const HandleClickButtonCancel = () => {
+        toast.warning("Cancelado com sucesso! Redirecionando", {
+            autoClose: 3000
+        })
+        setTimeout(() => {
+            navigation('/listar/Bairro');
+        }, 3500);
+
     }
     return (
         <>
@@ -61,7 +69,7 @@ function Bairro() {
                     <Button className='buttons-links' color='primary' onClick={HandleClickButton}>
                         Enviar
                     </Button>
-                    <Button className='buttons-links' color='danger' onClick={HandleClickReturn}>
+                    <Button className='buttons-links' color='danger' onClick={HandleClickButtonCancel}>
                         Cancelar
                     </Button>
 

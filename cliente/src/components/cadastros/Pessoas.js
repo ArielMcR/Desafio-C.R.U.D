@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from "react-toastify";
 
 function Pessoas() {
+    const navigation = useNavigate()
     const host = 'http://localhost:3001'
 
     const history = useNavigate()
@@ -82,7 +83,15 @@ function Pessoas() {
     const HandleOnChange = (e) => {
         setValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
+    const HandleClickButtonCancel = () => {
+        toast.warning("Cancelado com sucesso! Redirecionando", {
+            autoClose: 3000
+        })
+        setTimeout(() => {
+            navigation('/listar/Pessoas');
+        }, 3500);
 
+    }
     return (
         <>
             <Header />
@@ -95,13 +104,13 @@ function Pessoas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="nome">Nome Completo</Label>
-                                <Input type="text" name="nome_Pessoa" id="nome" placeholder="Nome" className="form-outline" onChange={HandleOnChange} />
+                                <Input type="text" name="nome_Pessoa" id="nome" placeholder="Nome" className="form-outline" required onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="email">Email</Label>
-                                <Input type="email" name="email" id="email" placeholder="Email" className="form-outline" onChange={HandleOnChange} />
+                                <Input type="email" name="email" id="email" placeholder="Email" className="form-outline" required onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -109,7 +118,7 @@ function Pessoas() {
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="bairro">Bairro</Label>
-                                <Input type="select" name="bairro_id" id="bairro" className="form-outline" onChange={HandleOnChange}>
+                                <Input type="select" name="bairro_id" id="bairro" required className="form-outline" onChange={HandleOnChange}>
                                     <option value='0' select>Escolha o Bairro</option>
                                     {bairro.map((bairro) => (
                                         <option key={bairro.id_Bairro} value={bairro.id_Bairro}>{bairro.nome_Bairro}</option>
@@ -121,7 +130,7 @@ function Pessoas() {
                             <FormGroup>
                                 <Label for="cidade">Cidade</Label>
                                 <Input type="select" name="cidade_id" id="cidade_id" className="form-outline" onChange={HandleOnChange}>
-                                    <option value='0' select>Escolha o Bairro</option>
+                                    <option value='0' required select>Escolha o Cidade</option>
                                     {cidade.map((cidade) => (
                                         <option key={cidade.id_Cidade} value={cidade.id_Cidade}>{cidade.nome_Cidade}</option>
                                     ))}
@@ -132,7 +141,7 @@ function Pessoas() {
                             <FormGroup>
                                 <Label for="cep">CEP</Label>
                                 <InputMask mask="99999-999" onChange={HandleOnChange}>
-                                    <Input type="text" name="cep" id="cep" placeholder="CEP" className="form-outline" />
+                                    <Input type="text" required name="cep" id="cep" placeholder="CEP" className="form-outline" />
                                 </InputMask>
 
                             </FormGroup>
@@ -142,7 +151,7 @@ function Pessoas() {
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="endereco">Endereço</Label>
-                                <Input type="text" name="endereco" id="endereco" placeholder="Endereço" className="form-outline" onChange={HandleOnChange} />
+                                <Input type="text" required name="endereco" id="endereco" placeholder="Endereço" className="form-outline" onChange={HandleOnChange} />
                             </FormGroup>
                         </Col>
                         <Col md={2}>
@@ -169,7 +178,7 @@ function Pessoas() {
                         </Col>
                     </Row>
                     <Button style={{ marginRight: 3 }} onClick={HandleClickButton} color="success">Enviar</Button>
-                    <Button color="danger">Cancelar</Button>
+                    <Button color="danger" onClick={HandleClickButtonCancel}>Cancelar</Button>
                 </Form>
             </Container>
         </>

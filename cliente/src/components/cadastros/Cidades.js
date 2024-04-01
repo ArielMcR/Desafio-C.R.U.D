@@ -39,6 +39,15 @@ function Cidade() {
         }
 
     }
+    const HandleClickButtonCancel = () => {
+        toast.warning("Cancelado com sucesso! Redirecionando", {
+            autoClose: 3000
+        })
+        setTimeout(() => {
+            navigate('/listar/Cidade');
+        }, 3500);
+
+    }
     return (
         <>
             <Header />
@@ -67,7 +76,7 @@ function Cidade() {
                     <Button className='buttons-links' color='primary' onClick={HandleClickButton}>
                         Enviar
                     </Button>
-                    <Button className='buttons-links' color='danger'>
+                    <Button className='buttons-links' color='danger' onClick={HandleClickButtonCancel}>
                         Cancelar
                     </Button>
 

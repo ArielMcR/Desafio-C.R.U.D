@@ -47,7 +47,13 @@ function UpdateBairro() {
 
     }
     const HandleClickButtonCancel = () => {
-        toast.warning("Cancelado com sucesso!")
+        toast.warning("Cancelado com sucesso! Redirecionando", {
+            autoClose: 3000
+        })
+        setTimeout(() => {
+            navigation('/listar/Bairro');
+        }, 3500);
+
     }
     return (
         <>

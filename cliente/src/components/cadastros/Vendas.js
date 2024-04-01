@@ -125,6 +125,12 @@ function Vendas() {
     }, [total]);
 
     const HandleClickButtonCancel = () => {
+        toast.warning("Cancelado com sucesso! Redirecionando", {
+            autoClose: 3000
+        })
+        setTimeout(() => {
+            history('/listar/Vendas');
+        }, 3500);
 
     }
     const [produto, setProdutos] = useState([])
@@ -221,6 +227,7 @@ function Vendas() {
                                     required
                                     value={formValues.vr_Venda}
                                     onChange={HandleOnChange}
+                                    disabled
                                 />
 
                             </FormGroup>
@@ -243,6 +250,7 @@ function Vendas() {
                                     required
                                     value={formValues.vr_Total}
                                     onChange={HandleOnChange}
+                                    disabled
                                 />
                             </FormGroup>
                         </Col>
