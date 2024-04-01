@@ -10,11 +10,13 @@ Este projeto consiste em um sistema de gestão de vendas online. A interface do 
 - [Contribuição](#contribuição)
 
 ## Observações
-Para este projeto é estritamente necessário o uso do Node JS e MySql, caso não possua nenhum dos dois basta acessar o link abaixo e realizar a instalação:
+Para este projeto é estritamente necessário o uso do Node JS e MySql e xampp(ou outro serviço mysql), caso não possua nenhum dos dois basta acessar o link abaixo e realizar a instalação:
 
 [Node Js](https://nodejs.org/en)
-
+<br>
 [MySql](https://dev.mysql.com/downloads/workbench/)
+<br>
+[Xampp](https://www.apachefriends.org/pt_br/index.html)
 </br> 
 Caso seu usuário do banco de dados tenha senha e um nome especifico é necessário por sua vez alterar o arquivo connection.js localizado dentro da pasta back-end
 
