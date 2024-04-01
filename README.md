@@ -1,5 +1,5 @@
 # C.R.U.D Projeto de desenvolvimento para vaga de estágio.
-Este projeto é um sistema de gestão de vendas na web. Usamos React JS para criar a interface do usuário. Axios e Express JS são usados para conectar o front-end e o back-end. E o back-end é construído com Node.js.
+Este projeto consiste em um sistema de gestão de vendas online. A interface do usuário é desenvolvida com React JS, proporcionando uma experiência interativa. Para a comunicação entre o front-end e o back-end, utilizamos Axios para requisições HTTP e Express JS para configurar o servidor. O back-end é robustamente construído com Node.js, garantindo escalabilidade e eficiência no processamento das operações de vendas.
 ## Índice
 
 - [Observações](#observações)
@@ -41,11 +41,6 @@ Para começar a utilizar o projeto, siga estas etapas simples:
     cd Desafio-C.R.U.D
     ```
 
-3. Instale as dependências:
-
-    ```bash
-    npm install
-    ```
 ## Bibliotecas Utilizadas
 
 Neste projeto, foram utilizadas diversas bibliotecas para o melhor desenvolvimento:
@@ -76,16 +71,21 @@ Para usar o projeto, siga estas instruções:
     ```
     cd cliente
     ````
-2. Estando dentro da pasta cliente, utilizaremos o comando, assim nossa aplicação front-end começara a rodar:
+    Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+3. Estando dentro da pasta cliente, utilizaremos o comando, assim nossa aplicação front-end começara a rodar:
     ```
     npm start
     ````
-3. Inciando um novo terminal, vamos iniciar nossos serviços de back-end, para isso entramos na pasta back-end:
+4. Inciando um novo terminal, vamos iniciar nossos serviços de back-end, para isso entramos na pasta back-end:
     ```
     cd back-end
     ````
-4. Dentro da pasta rodamos novamente o comando `npm start`
-5. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
+5. Dentro da pasta rodamos novamente o comando ```npm install``` e `npm start`
+6. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
 ## Pastas
 **Back-end**
 * **controllers**: Esta pasta contém todos os controladores dos endpoints da API. Cada controlador é responsável por manipular as solicitações e respostas, executando a lógica de negócios necessária.
@@ -107,7 +107,7 @@ Para usar o projeto, siga estas instruções:
     - **index.js**: Este é o ponto de entrada. É aqui que o componente raiz do seu aplicativo é renderizado no DOM.
     - **MainRoutes.js**: Este arquivo contém as rotas principais do  aplicativo, definindo qual componente deve ser renderizado com base na URL.
 
-## Endpoints da Api
+## Endpoints
 Quando o servidor back-end for iniciado como explicado no tópico [uso](#uso), você terá acesso ao servidor express a qual está rodando o back-end, la url [http://localhost:3001/api-docs](http://localhost:3001/api-docs) você irá encontrar todos a documentação da API utilizada, explicando todos os endpoints.
 
 `Representação gráfica`
