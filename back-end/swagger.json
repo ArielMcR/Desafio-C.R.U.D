@@ -807,6 +807,197 @@
                         "description": "Erro interno do servido"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Venda Itens"
+                ],
+                "summary": "Cria uma nova venda de um item",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "name": "body",
+                        "description": "Dados da venda do item",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "venda_id": {
+                                    "type": "string"
+                                },
+                                "produto_id": {
+                                    "type": "string"
+                                },
+                                "qtade": {
+                                    "type": "integer"
+                                },
+                                "vr_Venda": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venda criada com sucesso"
+                    },
+                    "500": {
+                        "description": "Ocorreu algum erro interno do servidor "
+                    }
+                }
+            }
+        },
+        "/vendaItens/{id}": {
+            "get": {
+                "tags": [
+                    "Venda Itens"
+                ],
+                "summary": "Obtém uma venda pelo ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID da venda",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venda encontrada"
+                    },
+                    "404": {
+                        "description": "Venda não encontrada"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Venda Itens"
+                ],
+                "summary": "Deleta um venda cadastrada",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "description": "id da venda",
+                        "required": true,
+                        "name": "id",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id_venda": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venda deletada com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Venda Itens"
+                ],
+                "summary": "Atualiza uma nova venda de um item",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "description": "ID da venda",
+                        "required": true,
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "name": "body",
+                        "description": "Dados da venda do item",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "venda_id": {
+                                    "type": "string"
+                                },
+                                "produto_id": {
+                                    "type": "string"
+                                },
+                                "qtade": {
+                                    "type": "integer"
+                                },
+                                "vr_Venda": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venda criada com sucesso"
+                    },
+                    "500": {
+                        "description": "Ocorreu algum erro interno do servidor "
+                    }
+                }
+            }
+        },
+        "/vendaItens/search": {
+            "post": {
+                "tags": [
+                    "Venda Itens"
+                ],
+                "summary": "Obter uma venda por filtros",
+                "description": "Retorna venda que correspondem aos filtros fornecidos",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "description": "Filtros para aplicar",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data_de_inicio": {
+                                    "type": "string",
+                                    "description": "Data de inicio"
+                                },
+                                "data_final": {
+                                    "type": "string",
+                                    "description": "Data final"
+                                },
+                                "produto_id": {
+                                    "type": "integer",
+                                    "description": "ID do produto"
+                                },
+                                "pessoa_id": {
+                                    "type": "integer",
+                                    "description": "ID da pessoa"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação bem-sucedida, retornando o array de venda, isto é quem comprou e valor total"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
             }
         }
     }
