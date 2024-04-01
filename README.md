@@ -107,7 +107,12 @@ Para usar o projeto, siga estas instruções:
     - **index.js**: Este é o ponto de entrada. É aqui que o componente raiz do seu aplicativo é renderizado no DOM.
     - **MainRoutes.js**: Este arquivo contém as rotas principais do  aplicativo, definindo qual componente deve ser renderizado com base na URL.
 
-## Endpoints
+## Endpoints da Api
+Quando o servidor back-end for iniciado como explicado no tópico [uso](#uso), você terá acesso ao servidor express a qual está rodando o back-end, la url [http://localhost:3001/api-docs](http://localhost:3001/api-docs) você irá encontrar todos a documentação da API utilizada, explicando todos os endpoints.
+
+`Representação gráfica`
+![image](https://github.com/ArielMcR/Imagens/blob/main/docApi.png)
+
 
 
 ## Contribuição
