@@ -41,11 +41,6 @@ Para começar a utilizar o projeto, siga estas etapas simples:
     cd Desafio-C.R.U.D
     ```
 
-3. Instale as dependências:
-
-    ```bash
-    npm install
-    ```
 ## Bibliotecas Utilizadas
 
 Neste projeto, foram utilizadas diversas bibliotecas para o melhor desenvolvimento:
@@ -76,16 +71,21 @@ Para usar o projeto, siga estas instruções:
     ```
     cd cliente
     ````
-2. Estando dentro da pasta cliente, utilizaremos o comando, assim nossa aplicação front-end começara a rodar:
+    Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+3. Estando dentro da pasta cliente, utilizaremos o comando, assim nossa aplicação front-end começara a rodar:
     ```
     npm start
     ````
-3. Inciando um novo terminal, vamos iniciar nossos serviços de back-end, para isso entramos na pasta back-end:
+4. Inciando um novo terminal, vamos iniciar nossos serviços de back-end, para isso entramos na pasta back-end:
     ```
     cd back-end
     ````
-4. Dentro da pasta rodamos novamente o comando `npm start`
-5. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
+5. Dentro da pasta rodamos novamente o comando ```npm install``` e `npm start`
+6. Com ambos funcionando você pode acesar [http://localhost:3000/](http://localhost:3000)
 ## Pastas
 **Back-end**
 * **controllers**: Esta pasta contém todos os controladores dos endpoints da API. Cada controlador é responsável por manipular as solicitações e respostas, executando a lógica de negócios necessária.
