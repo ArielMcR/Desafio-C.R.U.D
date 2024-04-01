@@ -35,7 +35,7 @@ const produtoController = {
                 console.log("Erro ao atualizar o produto:", err);
                 res.status(500).send("Erro ao excluir produto.");
             } else {
-                res.status(200).send("produto atualizada com sucesso.");
+                res.status(200).send("produto atualizado com sucesso.");
             }
         })
     },
@@ -49,6 +49,7 @@ const produtoController = {
                 return res.status(500).json({ error: 'Ocorreu um erro ao verificar o produto' });
             }
             if (result.length > 0) {
+
                 return res.status(400).json({ error: 'Produto já está cadastrado' });
             } else {
                 const q = "INSERT INTO Produto (nome_Produto, vr_Venda) VALUES (?)";
@@ -57,7 +58,7 @@ const produtoController = {
                         console.error('Erro ao inserir novo produto:', err);
                         return res.status(500).json({ error: 'Ocorreu um erro ao criar o produto' });
                     }
-                    return res.json(data);
+                    return res.json("Produto adicionado com sucesso!!")
                 });
             }
         });
@@ -70,6 +71,7 @@ const produtoController = {
             if (err) {
                 console.error(err);
             } else {
+                console.log("Produto deletado com sucesso")
             }
         });
     }

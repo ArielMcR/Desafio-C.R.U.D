@@ -49,7 +49,7 @@ const cidadeController = {
                 return res.status(500).json({ error: 'Ocorreu um erro ao verificar a cidade' });
             }
             if (result.length > 0) {
-                return res.status(400).json({ error: 'Cidade já está cadastrado' });
+                return res.status(400).json({ error: 'Cidade já está cadastrada' });
             } else {
                 const q = "INSERT INTO Cidade (nome_Cidade, sigla_Uf) VALUES (?, ?)";
                 db.query(q, values, (err, data) => {
@@ -57,6 +57,7 @@ const cidadeController = {
                         console.error(err);
                     }
                     else {
+                        console.log('Cidade cadastrada com sucesso')
                         return res.json(data);
                     }
                 });

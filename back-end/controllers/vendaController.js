@@ -54,7 +54,7 @@ const vendasController = {
             if (err) {
                 return res.status(500).json({ error: 'Ocorreu um erro ao criar a venda' });
             }
-            return res.json({ 'id': data.insertId });
+            return console.log("Venda criada com sucesso"), res.json({ 'id': data.insertId });
         });
     },
     delete: (req, res) => {
