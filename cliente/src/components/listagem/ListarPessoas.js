@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header'
 import { Table, Button } from 'reactstrap'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 function ListarPessoas() {
     const host = 'http://localhost:3001'
@@ -19,7 +19,6 @@ function ListarPessoas() {
             console.log('Erro ao buscar cidades:', err);
         }
     }
-    console.log(pessoas)
     useEffect(() => {
         fetchPessoas()
     }, [])
@@ -28,8 +27,7 @@ function ListarPessoas() {
         try {
             toast.success('Excluído com sucesso')
             await axios.delete(`${host}/pessoas/` + pessoas_id);
-            setReload(!reload)
-            history('/listar/Pessoas');
+            history('/listar/Pessoa')
         } catch (error) {
             toast.success('Ocorreu algum com sucesso')
         }

@@ -38,6 +38,13 @@ function ListarVenda() {
             toast.error('Ocorreu algum com sucesso')
         }
     }
+    useEffect(() => {
+        const notification = localStorage.getItem('notification');
+        if (notification) {
+            toast.success(notification);
+            localStorage.removeItem('notification');
+        }
+    }, []);
 
     return (
         <>

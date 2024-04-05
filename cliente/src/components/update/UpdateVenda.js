@@ -303,7 +303,6 @@ function UpdateVenda() {
                     <tbody>
                         {cartItems.map((produto, index) => (
                             <tr key={index}>
-                                <td>{produto.id_VendaItens}</td>
                                 <td>{produto.nome_Produto}</td>
                                 <td>{produto.qtade}</td>
                                 <td>R$ {produto.vr_Venda}</td>

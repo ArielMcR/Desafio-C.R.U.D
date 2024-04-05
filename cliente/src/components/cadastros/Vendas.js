@@ -68,12 +68,10 @@ function Vendas() {
             console.log(valor_Id)
             const updatedCartItems = cartItems.map(item => ({ ...item, 'venda_id': valor_Id }));
             setCartItems(updatedCartItems);
-            console.log(updatedCartItems)
-
             for (const produto of updatedCartItems) {
                 await axios.post(`${host}/vendaItens`, produto);
             }
-
+            localStorage.setItem('notification', 'Venda criada com sucesso',);
             history('/listar/Vendas')
         } catch (error) {
             console.error(error);
