@@ -276,7 +276,7 @@ function Vendas() {
                                 <td>{produto.nome_Produto}</td>
                                 <td>{produto.qtade}</td>
                                 <td>R$ {produto.vr_Venda}</td>
-                                <td>R$ {produto.vr_Total}</td>
+                                <td>R$ {produto.vr_Total.toFixed(2)}</td>
                                 <td>
                                     {/* Botão para remover item do carrinho */}
                                     <Button color='danger' onClick={() => removeFromCart(index)}>
@@ -287,7 +287,7 @@ function Vendas() {
                         ))}
                     </tbody>
                 </Table>
-                <div className="text-right">Total: {total}</div>
+                <div className="text-right">Total: {total.toFixed(2)}</div>
                 <div className="text-center">
                     <Button color='success' className="me-3" onClick={HandleClickButton}>
                         Enviar

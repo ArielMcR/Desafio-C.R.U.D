@@ -77,9 +77,9 @@ function ListarVenda() {
                                 <tr key={venda.id}>
                                     <td>{venda.id}</td>
                                     <td>{venda.nome_Pessoa}</td>
-                                    <td>{venda.vr_Total}</td>
+                                    <td>{venda.vr_Total.toFixed(2)}</td>
 
-                                    <td className='text-center'>
+                                    <td className='text-center m-2'>
                                         <Link to={`/update/vendas/${venda.id}`}>
                                             <Button color='warning' style={{ marginRight: '10px' }}>
                                                 Editar
@@ -89,6 +89,7 @@ function ListarVenda() {
                                             Excluir
                                         </Button>
                                     </td>
+
                                 </tr>
                             ))}
                         </tbody>

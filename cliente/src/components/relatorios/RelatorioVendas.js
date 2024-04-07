@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header'
 import { Form, FormGroup, Label, Input, Row, Col, Table, Button } from 'reactstrap';
 import { IoSearch } from "react-icons/io5";
+import { FaFilePdf } from "react-icons/fa6";
+import vendasPdf from '../../PDF\'S/vendasPdf';
+
 
 import axios from 'axios'
 import { ToastContainer } from 'react-toastify'
@@ -91,7 +94,7 @@ function RelatorioVendas() {
                             <Input type="date" name="dataFinal" id="dataFinal" onChange={HandleOnChange} />
                         </FormGroup>
                     </Col>
-                    <Col md={4} >
+                    <Col md={2} >
                         <FormGroup>
                             <Label for="produto_id">Produto:</Label>
                             <Input type="select" name="produto_id" id="produto" onChange={HandleOnChange}>
@@ -103,7 +106,7 @@ function RelatorioVendas() {
                         </FormGroup>
                     </Col>
 
-                    <Col md={2}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label for="Pessoa">Pessoa</Label>
                             <Input type="select" name="pessoa_id" id="Pessoa" className="form-outline" onChange={HandleOnChange}>
@@ -114,12 +117,18 @@ function RelatorioVendas() {
                             </Input>
                         </FormGroup>
                     </Col>
-                    <Col md={2} >
+                    <Col md={3} >
 
-                        <Button color='success' style={{ marginTop: '1.8em' }} onClick={HandleClickButton}>
+                        <Button color='success' style={{ marginTop: '1.8em', marginRight: '2em' }} onClick={HandleClickButton}>
                             <IoSearch size="1.3rem" />
                             Filtrar
                         </Button>
+
+
+                        <Button color='primary' style={{ marginTop: '1.8em', }} onClick={(e) => vendasPdf(venda)}>
+                            <FaFilePdf /> Imprimir
+                        </Button>
+
                     </Col>
                 </Row>
 
@@ -140,13 +149,13 @@ function RelatorioVendas() {
                                 <tr key={venda.id}>
                                     <td>{venda.id}</td>
                                     <td>{venda.nome_Pessoa}</td>
-                                    <td>R$ {venda.vr_Total}</td>
+                                    <td>R$ {venda.vr_Total.toFixed(2)}</td>
 
                                 </tr>
                             ))}
                         </tbody>
                     </Table>
-                    <div className="text-right me-5">Total: R$ {total}</div>
+                    <div className="text-right me-5">Total: R$ {total.toFixed(2)}</div>
                 </div>
 
             ) : (

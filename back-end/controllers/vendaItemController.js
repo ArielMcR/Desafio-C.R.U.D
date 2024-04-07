@@ -27,7 +27,7 @@ const vendaItemController = {
     getByFilters: (req, res) => {
         const { dataInicio, dataFinal, produto_id, pessoa_id } = req.body
 
-        let baseQuery = "SELECT Venda.id, Pessoa.nome_Pessoa,Venda.vr_Total FROM Venda_Itens INNER JOIN Venda ON Venda_Itens.venda_id = Venda.id INNER JOIN  Pessoa ON Venda.pessoa_id = pessoa.id_Pessoa "
+        let baseQuery = "SELECT Venda.id, Venda.dt_Venda, Pessoa.nome_Pessoa,Venda.vr_Total FROM Venda_Itens INNER JOIN Venda ON Venda_Itens.venda_id = Venda.id INNER JOIN  Pessoa ON Venda.pessoa_id = pessoa.id_Pessoa "
         let conditions = [];
 
         if (dataInicio, dataFinal) {

@@ -71,7 +71,7 @@ function ListarProduto() {
                                 <tr key={produto.id_Produto}>
                                     <td>{produto.id_Produto}</td>
                                     <td>{produto.nome_Produto}</td>
-                                    <td>{produto.vr_Venda}</td>
+                                    <td>{produto.vr_Venda.toFixed(2)}</td>
 
                                     <td className='text-center'>
                                         <Link to={`/update/produto/${produto.id_Produto}`}>
