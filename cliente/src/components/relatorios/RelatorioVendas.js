@@ -126,7 +126,7 @@ function RelatorioVendas() {
 
 
                         <Button color='primary' style={{ marginTop: '1.8em', }} onClick={(e) => vendasPdf(venda)}>
-                            <FaFilePdf /> Imprimir
+                            <FaFilePdf /> Gerar PDF
                         </Button>
 
                     </Col>
